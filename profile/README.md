@@ -136,5 +136,5 @@
 </p>
 
 <p align="center">
-  <sub>Istanbul, Turkey | LAT: 41.0082° N | LONG: 28.9784° E</sub>
+  <sub>London,UK</sub>
 </p>
