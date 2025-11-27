@@ -2,9 +2,7 @@
   <defs>
     <style>
       /* ═══════════════════════════════════════════════════════════════════════
-         SIMULATION CARD v4.0
-         GitHub-compatible: CSS-only animations (no SMIL, no transform-origin)
-         Uses fill-opacity, stroke-opacity, stroke-dashoffset animations
+         SIMULATION CARD v4.0 - GitHub-compatible CSS-only animations
       ═══════════════════════════════════════════════════════════════════════ */
 
       .card-bg { fill: #0a0e14; }

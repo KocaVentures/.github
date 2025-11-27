@@ -3,7 +3,7 @@
     <style>
       /* ═══════════════════════════════════════════════════════════════════════
          ROBOTICS CARD - 6-DOF v4.0
-         GitHub-compatible: CSS-only animations (no SMIL <animate> tags)
+         GitHub-compatible: CSS-only animations (no SMIL animate tags)
          Uses fill, opacity, stroke-dashoffset animations
       ═══════════════════════════════════════════════════════════════════════ */
 
