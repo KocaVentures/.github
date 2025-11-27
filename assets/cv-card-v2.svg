@@ -1,32 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
   <defs>
     <style>
-      /* ═══════════════════════════════════════════════════════════════════════
-         COMPUTER VISION CARD - ULTIMATE v2.0
-         Advanced: Multi-layer eye scan, neon glow system, HUD targeting,
-         data stream visualization, iris recognition animation
-      ═══════════════════════════════════════════════════════════════════════ */
-      
+      /* COMPUTER VISION CARD v2.0 - GitHub-compatible CSS-only */
+
       .card-bg { fill: #0a0e14; }
-      
-      /* ─────────────── NEON BORDER SYSTEM ─────────────── */
-      @keyframes border-trace {
-        0% { stroke-dashoffset: 800; }
-        100% { stroke-dashoffset: 0; }
+
+      /* NEON BORDER - Continuous loop */
+      @keyframes border-flow {
+        0% { stroke-dashoffset: 960; stroke: #00ff88; }
+        50% { stroke-dashoffset: 480; stroke: #00ffff; }
+        100% { stroke-dashoffset: 0; stroke: #00ff88; }
       }
       
-      @keyframes border-glow {
-        0%, 100% { 
-          stroke: #00ff88;
-          filter: drop-shadow(0 0 3px #00ff88) drop-shadow(0 0 8px #00ff88);
-        }
-        50% { 
-          stroke: #00ffff;
-          filter: drop-shadow(0 0 5px #00ffff) drop-shadow(0 0 15px #00ffff);
-        }
-      }
-      
-      /* ─────────────── EYE SCANNING SYSTEM ─────────────── */
+      /* EYE SCANNING SYSTEM */
       @keyframes iris-scan {
         0%, 100% { transform: translateY(-18px); opacity: 0.3; }
         50% { transform: translateY(18px); opacity: 1; }
@@ -60,7 +46,7 @@
         100% { stroke-dashoffset: 100; opacity: 0.8; }
       }
       
-      /* ─────────────── PULSE RINGS ─────────────── */
+      /* PULSE RINGS */
       @keyframes detection-ring {
         0% {
           opacity: 0.8;
@@ -74,7 +60,7 @@
         }
       }
       
-      /* ─────────────── HUD TARGETING ─────────────── */
+      /* HUD TARGETING */
       @keyframes target-rotate {
         0% { stroke-dashoffset: 0; opacity: 0.8; }
         50% { stroke-dashoffset: -30; opacity: 1; }
@@ -93,7 +79,7 @@
         100% { stroke-dashoffset: 0; opacity: 0; }
       }
       
-      /* ─────────────── RECOGNITION BARS ─────────────── */
+      /* RECOGNITION BARS */
       @keyframes bar-fill {
         0% { width: 0; }
         100% { width: 100%; }
@@ -104,13 +90,13 @@
         50% { opacity: 1; }
       }
       
-      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
-      
+      /* ELEMENT CLASSES */
+
       .card-border {
         fill: none;
         stroke-width: 2;
-        stroke-dasharray: 800;
-        animation: border-trace 2s ease-out forwards, border-glow 4s ease-in-out infinite 2s;
+        stroke-dasharray: 60 20;
+        animation: border-flow 3s linear infinite;
       }
       
       /* Eye components */

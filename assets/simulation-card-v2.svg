@@ -5,15 +5,11 @@
 
       .card-bg { fill: #0a0e14; }
 
-      /* NEON BORDER */
-      @keyframes border-trace {
-        0% { stroke-dashoffset: 800; }
-        100% { stroke-dashoffset: 0; }
-      }
-
-      @keyframes border-glow-purple {
-        0%, 100% { stroke: #8800ff; }
-        50% { stroke: #a855f7; }
+      /* NEON BORDER - Continuous loop */
+      @keyframes border-flow {
+        0% { stroke-dashoffset: 960; stroke: #8800ff; }
+        50% { stroke-dashoffset: 480; stroke: #cc88ff; }
+        100% { stroke-dashoffset: 0; stroke: #8800ff; }
       }
 
       /* 3D CUBE SYSTEM */
@@ -88,8 +84,8 @@
       .card-border {
         fill: none;
         stroke-width: 2;
-        stroke-dasharray: 800;
-        animation: border-trace 2s ease-out forwards, border-glow-purple 4s ease-in-out infinite 2s;
+        stroke-dasharray: 60 20;
+        animation: border-flow 3s linear infinite;
       }
 
       /* 3D Cube faces */

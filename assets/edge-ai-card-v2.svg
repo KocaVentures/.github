@@ -1,32 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
   <defs>
     <style>
-      /* ═══════════════════════════════════════════════════════════════════════
-         EDGE AI CARD - ULTIMATE v2.0
-         Advanced: Neural processor visualization, thermal mapping,
-         data pipeline flow, tensor operations, inference metrics
-      ═══════════════════════════════════════════════════════════════════════ */
-      
+      /* EDGE AI CARD v2.0 - GitHub-compatible CSS-only */
+
       .card-bg { fill: #0a0e14; }
-      
-      /* ─────────────── NEON BORDER ─────────────── */
-      @keyframes border-trace {
-        0% { stroke-dashoffset: 800; }
-        100% { stroke-dashoffset: 0; }
+
+      /* NEON BORDER - Continuous loop */
+      @keyframes border-flow {
+        0% { stroke-dashoffset: 960; stroke: #76B900; }
+        50% { stroke-dashoffset: 480; stroke: #9acd32; }
+        100% { stroke-dashoffset: 0; stroke: #76B900; }
       }
       
-      @keyframes border-glow-green {
-        0%, 100% {
-          stroke: #76B900;
-          stroke-opacity: 0.8;
-        }
-        50% {
-          stroke: #9acd32;
-          stroke-opacity: 1;
-        }
-      }
-      
-      /* ─────────────── CHIP SYSTEM ─────────────── */
+      /* CHIP SYSTEM */
       @keyframes chip-pulse {
         0%, 100% {
           fill: #0d1520;
@@ -52,7 +38,7 @@
         100% { stroke-dashoffset: 0; opacity: 0; }
       }
       
-      /* ─────────────── PIN SIGNALS ─────────────── */
+      /* PIN SIGNALS */
       @keyframes pin-signal {
         0% { stroke-dashoffset: 15; opacity: 0; }
         30% { opacity: 1; }
@@ -65,7 +51,7 @@
         50% { fill: #76B900; fill-opacity: 1; }
       }
       
-      /* ─────────────── THERMAL VISUALIZATION ─────────────── */
+      /* THERMAL VISUALIZATION */
       @keyframes thermal-pulse {
         0%, 100% { opacity: 0.1; }
         50% { opacity: 0.3; }
@@ -76,26 +62,26 @@
         50% { stop-color: #ffaa00; }
       }
       
-      /* ─────────────── LED SYSTEM ─────────────── */
+      /* LED SYSTEM */
       @keyframes led-sequence {
         0%, 20% { fill: #222; fill-opacity: 0.5; }
         25%, 45% { fill: #76B900; fill-opacity: 1; }
         50%, 100% { fill: #222; fill-opacity: 0.5; }
       }
       
-      /* ─────────────── METRICS ─────────────── */
+      /* METRICS */
       @keyframes metric-update {
         0%, 100% { opacity: 0.8; }
         50% { opacity: 1; }
       }
       
-      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
-      
+      /* ELEMENT CLASSES */
+
       .card-border {
         fill: none;
         stroke-width: 2;
-        stroke-dasharray: 800;
-        animation: border-trace 2s ease-out forwards, border-glow-green 4s ease-in-out infinite 2s;
+        stroke-dasharray: 60 20;
+        animation: border-flow 3s linear infinite;
       }
       
       /* Chip */

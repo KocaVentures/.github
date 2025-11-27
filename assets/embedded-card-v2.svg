@@ -1,32 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
   <defs>
     <style>
-      /* ═══════════════════════════════════════════════════════════════════════
-         EMBEDDED SYSTEMS CARD - ULTIMATE v2.0
-         Advanced: PCB manufacturing detail, signal integrity visualization,
-         component library, power distribution, oscilloscope trace
-      ═══════════════════════════════════════════════════════════════════════ */
-      
+      /* EMBEDDED SYSTEMS CARD v2.0 - GitHub-compatible CSS-only */
+
       .card-bg { fill: #0a0e14; }
-      
-      /* ─────────────── NEON BORDER ─────────────── */
-      @keyframes border-trace {
-        0% { stroke-dashoffset: 800; }
-        100% { stroke-dashoffset: 0; }
+
+      /* NEON BORDER - Continuous loop */
+      @keyframes border-flow {
+        0% { stroke-dashoffset: 960; stroke: #f97316; }
+        50% { stroke-dashoffset: 480; stroke: #fb923c; }
+        100% { stroke-dashoffset: 0; stroke: #f97316; }
       }
       
-      @keyframes border-glow-orange {
-        0%, 100% { 
-          stroke: #f97316;
-          filter: drop-shadow(0 0 3px #f97316) drop-shadow(0 0 8px #f97316);
-        }
-        50% { 
-          stroke: #fb923c;
-          filter: drop-shadow(0 0 5px #fb923c) drop-shadow(0 0 15px #fb923c);
-        }
-      }
-      
-      /* ─────────────── PCB TRACES ─────────────── */
+      /* PCB TRACES */
       @keyframes trace-flow {
         0% { stroke-dashoffset: 100; }
         100% { stroke-dashoffset: 0; }
@@ -44,7 +30,7 @@
         50% { filter: drop-shadow(0 0 4px #c9a227); }
       }
       
-      /* ─────────────── COMPONENT ANIMATIONS ─────────────── */
+      /* COMPONENT ANIMATIONS */
       @keyframes component-pulse {
         0%, 100% { transform: scale(1); opacity: 0.9; }
         50% { transform: scale(1.02); opacity: 1; }
@@ -60,7 +46,7 @@
         50% { fill: #fbbf24; }
       }
       
-      /* ─────────────── LED SEQUENCE ─────────────── */
+      /* LED SEQUENCE */
       @keyframes led-blink {
         0%, 40% { fill: #1a2a1a; }
         50%, 90% { fill: #00ff00; filter: drop-shadow(0 0 5px #00ff00); }
@@ -72,13 +58,13 @@
         50% { fill: #00cc00; filter: drop-shadow(0 0 6px #00ff00); }
       }
       
-      /* ─────────────── VIA AND PAD ─────────────── */
+      /* VIA AND PAD */
       @keyframes via-glow {
         0%, 100% { filter: drop-shadow(0 0 1px #c9a227); }
         50% { filter: drop-shadow(0 0 4px #c9a227); }
       }
       
-      /* ─────────────── OSCILLOSCOPE ─────────────── */
+      /* OSCILLOSCOPE */
       @keyframes wave-draw {
         0% { stroke-dashoffset: 200; }
         100% { stroke-dashoffset: 0; }
@@ -89,13 +75,13 @@
         100% { transform: translateX(-30px); }
       }
       
-      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
-      
+      /* ELEMENT CLASSES */
+
       .card-border {
         fill: none;
         stroke-width: 2;
-        stroke-dasharray: 800;
-        animation: border-trace 2s ease-out forwards, border-glow-orange 4s ease-in-out infinite 2s;
+        stroke-dasharray: 60 20;
+        animation: border-flow 3s linear infinite;
       }
       
       /* PCB */
