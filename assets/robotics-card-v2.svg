@@ -270,7 +270,10 @@
     <rect class="arm-detail" x="40" y="100" width="20" height="5" rx="2"/>
 
     <!-- J1: Base rotation joint -->
-    <circle class="j1" cx="50" cy="87" r="6" fill="#ec4899"/>
+    <circle cx="50" cy="87" r="6" fill="#ec4899">
+      <animate attributeName="cx" values="50;48;50;52;50" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#ec4899;#f472b6;#ec4899" dur="2s" repeatCount="indefinite"/>
+    </circle>
     <path class="torque-arc" d="M 38,87 A 12,12 0 0,1 62,87"/>
     <text class="joint-label" x="68" y="89">J1</text>
 
@@ -281,7 +284,10 @@
     <rect class="arm-segment" x="45" y="55" width="10" height="35" rx="4"/>
 
     <!-- J2: Shoulder joint -->
-    <circle class="j2" cx="50" cy="55" r="5" fill="#f472b6"/>
+    <circle cx="50" cy="55" r="5" fill="#f472b6">
+      <animate attributeName="cy" values="55;53;55;57;55" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#f472b6;#ec4899;#f472b6" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </circle>
     <path class="torque-arc torque-arc-2" d="M 40,50 A 10,10 0 0,1 60,50"/>
     <text class="joint-label" x="65" y="57">J2</text>
 
@@ -292,7 +298,10 @@
     <rect class="arm-segment arm-segment-2" x="45" y="28" width="10" height="30" rx="4"/>
 
     <!-- J3: Elbow joint -->
-    <circle class="j3" cx="50" cy="28" r="5" fill="#ec4899"/>
+    <circle cx="50" cy="28" r="5" fill="#ec4899">
+      <animate attributeName="cy" values="28;26;28;30;28" dur="2.8s" repeatCount="indefinite" begin="0.4s"/>
+      <animate attributeName="fill" values="#ec4899;#ff6b9d;#ec4899" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+    </circle>
     <path class="torque-arc torque-arc-3" d="M 42,24 A 8,8 0 0,1 58,24"/>
     <text class="joint-label" x="63" y="30">J3</text>
 
@@ -303,11 +312,17 @@
     <rect class="arm-segment arm-segment-3" x="46" y="18" width="8" height="12" rx="2"/>
 
     <!-- J4: Wrist pitch -->
-    <circle class="j4" cx="50" cy="20" r="4" fill="#f472b6"/>
+    <circle cx="50" cy="20" r="4" fill="#f472b6">
+      <animate attributeName="cy" values="20;18;20;22;20" dur="2.2s" repeatCount="indefinite" begin="0.6s"/>
+      <animate attributeName="fill" values="#f472b6;#ff6b9d;#f472b6" dur="2s" repeatCount="indefinite" begin="0.9s"/>
+    </circle>
     <text class="joint-label" x="58" y="22">J4</text>
 
     <!-- J5: Wrist roll -->
-    <circle class="j5" cx="50" cy="14" r="3" fill="#ff6b9d"/>
+    <circle cx="50" cy="14" r="3" fill="#ff6b9d">
+      <animate attributeName="cx" values="50;49;50;51;50" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+      <animate attributeName="fill" values="#ff6b9d;#ec4899;#ff6b9d" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+    </circle>
     <text class="joint-label" x="56" y="16">J5</text>
 
     <!-- Energy flow to gripper -->
@@ -317,8 +332,14 @@
     <rect class="arm-segment" x="46" y="4" width="8" height="10" rx="2"/>
 
     <!-- J6: Gripper fingers -->
-    <path class="j6-l arm-segment" d="M 44,8 L 36,0 L 38,-2 L 46,6 Z"/>
-    <path class="j6-r arm-segment" d="M 56,8 L 64,0 L 62,-2 L 54,6 Z"/>
+    <path class="arm-segment" d="M 44,8 L 36,0 L 38,-2 L 46,6 Z">
+      <animate attributeName="opacity" values="1;0.7;1" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="2;2.5;2" dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    <path class="arm-segment" d="M 56,8 L 64,0 L 62,-2 L 54,6 Z">
+      <animate attributeName="opacity" values="1;0.7;1" dur="1.5s" repeatCount="indefinite" begin="0.1s"/>
+      <animate attributeName="stroke-width" values="2;2.5;2" dur="1.5s" repeatCount="indefinite" begin="0.1s"/>
+    </path>
     <text class="joint-label" x="28" y="4">J6</text>
   </g>
 
