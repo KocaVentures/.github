@@ -2,340 +2,294 @@
   <defs>
     <style>
       /* ═══════════════════════════════════════════════════════════════════════
-         SIMULATION CARD - ULTIMATE v2.0
-         Advanced: Isometric 3D visualization, physics particles,
-         coordinate system, wireframe rendering, environment mapping
+         SIMULATION CARD v4.0
+         GitHub-compatible: CSS-only animations (no SMIL, no transform-origin)
+         Uses fill-opacity, stroke-opacity, stroke-dashoffset animations
       ═══════════════════════════════════════════════════════════════════════ */
-      
+
       .card-bg { fill: #0a0e14; }
-      
+
       /* ─────────────── NEON BORDER ─────────────── */
       @keyframes border-trace {
         0% { stroke-dashoffset: 800; }
         100% { stroke-dashoffset: 0; }
       }
-      
+
       @keyframes border-glow-purple {
-        0%, 100% { 
-          stroke: #8800ff;
-          filter: drop-shadow(0 0 3px #8800ff) drop-shadow(0 0 8px #8800ff);
-        }
-        50% { 
-          stroke: #a855f7;
-          filter: drop-shadow(0 0 5px #a855f7) drop-shadow(0 0 15px #a855f7);
-        }
+        0%, 100% { stroke: #8800ff; }
+        50% { stroke: #a855f7; }
       }
-      
-      /* ─────────────── 3D CUBE SYSTEM (2D compatible for GitHub) ─────────────── */
-      @keyframes cube-pulse {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px #8800ff); }
-        50% { transform: scale(1.05); filter: drop-shadow(0 0 15px #8800ff); }
-      }
-      
+
+      /* ─────────────── 3D CUBE SYSTEM ─────────────── */
       @keyframes face-shimmer {
         0%, 100% { fill-opacity: 0.3; }
-        50% { fill-opacity: 0.5; }
+        50% { fill-opacity: 0.6; }
       }
-      
+
       @keyframes wireframe-pulse {
-        0%, 100% { stroke-opacity: 0.5; stroke-width: 1; }
-        50% { stroke-opacity: 1; stroke-width: 1.5; }
-      }
-      
-      @keyframes edge-glow {
-        0%, 100% { filter: drop-shadow(0 0 2px #a855f7); }
-        50% { filter: drop-shadow(0 0 8px #a855f7); }
-      }
-      
-      /* ─────────────── PHYSICS PARTICLES (GitHub-compatible) ─────────────── */
-      @keyframes particle-orbit-1 {
-        0% { opacity: 1; cx: 35px; cy: 0; }
-        25% { opacity: 0.8; cx: 0; cy: 35px; }
-        50% { opacity: 1; cx: -35px; cy: 0; }
-        75% { opacity: 0.8; cx: 0; cy: -35px; }
-        100% { opacity: 1; cx: 35px; cy: 0; }
+        0%, 100% { stroke-opacity: 0.4; }
+        50% { stroke-opacity: 1; }
       }
 
-      @keyframes particle-orbit-2 {
-        0% { opacity: 0.8; cx: 0; cy: 35px; }
-        25% { opacity: 1; cx: -35px; cy: 0; }
-        50% { opacity: 0.8; cx: 0; cy: -35px; }
-        75% { opacity: 1; cx: 35px; cy: 0; }
-        100% { opacity: 0.8; cx: 0; cy: 35px; }
+      /* ─────────────── PHYSICS PARTICLES ─────────────── */
+      @keyframes particle-glow-1 {
+        0%, 100% { fill-opacity: 1; fill: #00ffff; }
+        50% { fill-opacity: 0.5; fill: #00cccc; }
       }
 
-      @keyframes particle-orbit-3 {
-        0% { opacity: 1; cx: -35px; cy: 0; }
-        25% { opacity: 0.8; cx: 0; cy: -35px; }
-        50% { opacity: 1; cx: 35px; cy: 0; }
-        75% { opacity: 0.8; cx: 0; cy: 35px; }
-        100% { opacity: 1; cx: -35px; cy: 0; }
+      @keyframes particle-glow-2 {
+        0%, 100% { fill-opacity: 0.8; fill: #ff00ff; }
+        50% { fill-opacity: 1; fill: #cc00cc; }
       }
-      
-      @keyframes particle-bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
+
+      @keyframes particle-glow-3 {
+        0%, 100% { fill-opacity: 0.9; fill: #ffff00; }
+        50% { fill-opacity: 0.6; fill: #cccc00; }
       }
-      
-      @keyframes particle-fade {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 1; }
+
+      @keyframes bounce-fade {
+        0%, 100% { fill-opacity: 0.4; }
+        50% { fill-opacity: 1; }
       }
-      
+
       /* ─────────────── COORDINATE SYSTEM ─────────────── */
       @keyframes axis-draw {
         0% { stroke-dashoffset: 50; }
         100% { stroke-dashoffset: 0; }
       }
-      
-      @keyframes axis-glow {
-        0%, 100% { filter: drop-shadow(0 0 2px currentColor); }
-        50% { filter: drop-shadow(0 0 6px currentColor); }
+
+      @keyframes axis-pulse {
+        0%, 100% { stroke-opacity: 0.7; }
+        50% { stroke-opacity: 1; }
       }
-      
+
       /* ─────────────── GRID SYSTEM ─────────────── */
       @keyframes grid-fade {
-        0%, 100% { opacity: 0.1; }
-        50% { opacity: 0.25; }
+        0%, 100% { stroke-opacity: 0.1; }
+        50% { stroke-opacity: 0.3; }
       }
-      
-      @keyframes grid-scan {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(20px); }
-      }
-      
-      /* ─────────────── ENVIRONMENT (GitHub-compatible) ─────────────── */
-      @keyframes env-pulse {
-        0%, 100% { opacity: 0.3; stroke-dashoffset: 0; }
-        50% { opacity: 0.6; stroke-dashoffset: 20; }
-      }
+
+      /* ─────────────── ENVIRONMENT RINGS ─────────────── */
       @keyframes env-flow {
-        0% { stroke-dashoffset: 0; }
-        100% { stroke-dashoffset: 40; }
+        0% { stroke-dashoffset: 0; stroke-opacity: 0.3; }
+        50% { stroke-dashoffset: 20; stroke-opacity: 0.7; }
+        100% { stroke-dashoffset: 40; stroke-opacity: 0.3; }
       }
-      
+
+      /* ─────────────── STATUS BARS ─────────────── */
+      @keyframes bar-pulse-1 {
+        0%, 100% { fill-opacity: 1; }
+        50% { fill-opacity: 0.7; }
+      }
+
+      @keyframes bar-pulse-2 {
+        0%, 100% { fill-opacity: 0.9; }
+        50% { fill-opacity: 0.6; }
+      }
+
       /* ═══════════════ ELEMENT CLASSES ═══════════════ */
-      
+
       .card-border {
         fill: none;
         stroke-width: 2;
         stroke-dasharray: 800;
         animation: border-trace 2s ease-out forwards, border-glow-purple 4s ease-in-out infinite 2s;
       }
-      
-      /* 3D Cube - using isometric projection (2D compatible) */
-      .cube-container {
-        animation: cube-pulse 4s ease-in-out infinite;
-      }
-      
+
+      /* 3D Cube faces */
       .cube-face { animation: face-shimmer 3s ease-in-out infinite; }
-      .cube-face-front { fill: #8800ff; fill-opacity: 0.4; }
-      .cube-face-side { fill: #a855f7; fill-opacity: 0.25; }
-      .cube-face-top { fill: #cc88ff; fill-opacity: 0.35; }
-      
-      .wireframe { 
-        fill: none; 
+      .cube-face-front { fill: #8800ff; fill-opacity: 0.5; }
+      .cube-face-side { fill: #a855f7; fill-opacity: 0.3; }
+      .cube-face-top { fill: #cc88ff; fill-opacity: 0.45; }
+
+      .wireframe {
+        fill: none;
         stroke: #a855f7;
-        animation: wireframe-pulse 2s ease-in-out infinite, edge-glow 3s ease-in-out infinite;
+        stroke-width: 1.5;
+        animation: wireframe-pulse 2s ease-in-out infinite;
       }
-      
+
       /* Particles */
-      .orbit-particle-1 {
-        animation: particle-orbit-1 4s linear infinite;
-      }
-      .orbit-particle-2 {
-        animation: particle-orbit-2 4s linear infinite;
-      }
-      .orbit-particle-3 {
-        animation: particle-orbit-3 4s linear infinite;
-      }
-      .bounce-particle { animation: particle-bounce 1.5s ease-in-out infinite, particle-fade 2s ease-in-out infinite; }
-      
+      .particle-1 { animation: particle-glow-1 2s ease-in-out infinite; }
+      .particle-2 { animation: particle-glow-2 2.5s ease-in-out infinite 0.3s; }
+      .particle-3 { animation: particle-glow-3 2.2s ease-in-out infinite 0.6s; }
+      .bounce-particle { animation: bounce-fade 1.8s ease-in-out infinite; }
+
       /* Axes */
       .axis {
         stroke-width: 2;
         stroke-dasharray: 50;
-        animation: axis-draw 1s ease-out forwards, axis-glow 2s ease-in-out infinite 1s;
+        animation: axis-draw 1s ease-out forwards, axis-pulse 2s ease-in-out infinite 1s;
       }
       .axis-x { stroke: #ff4444; }
       .axis-y { stroke: #44ff44; }
       .axis-z { stroke: #4488ff; }
       .axis-label { font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: bold; }
-      
+
       /* Grid */
       .grid-line { stroke: #8800ff; stroke-width: 0.5; animation: grid-fade 4s ease-in-out infinite; }
-      
-      /* Environment sphere (GitHub-compatible - no transform-origin rotation) */
+
+      /* Environment rings */
       .env-ring {
         fill: none;
         stroke: #8800ff;
         stroke-width: 0.5;
         stroke-dasharray: 5 3;
-        animation: env-pulse 4s ease-in-out infinite, env-flow 2s linear infinite;
+        animation: env-flow 3s linear infinite;
       }
       .env-ring-2 { animation-delay: 0.5s; }
       .env-ring-3 { animation-delay: 1s; }
-      
+
+      /* Status bars */
+      .status-bar-1 { fill: #8800ff; animation: bar-pulse-1 2s ease-in-out infinite; }
+      .status-bar-2 { fill: #a855f7; animation: bar-pulse-2 2s ease-in-out infinite 0.3s; }
+
       /* Text */
       .title { fill: #ffffff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 700; }
       .desc { fill: #8b949e; font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; }
       .metric { fill: #a855f7; font-family: 'JetBrains Mono', monospace; font-size: 7px; }
       .tag { rx: 4; }
       .tag-text { fill: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9px; font-weight: 600; }
-      
+
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
       }
     </style>
-    
+
     <!-- Gradients -->
     <radialGradient id="simGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#8800ff" stop-opacity="0.3"/>
       <stop offset="100%" stop-color="#8800ff" stop-opacity="0"/>
     </radialGradient>
-    
-    <linearGradient id="cubeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#8800ff"/>
-      <stop offset="100%" stop-color="#a855f7"/>
-    </linearGradient>
-    
+
     <filter id="glow">
       <feGaussianBlur stdDeviation="2" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-  
+
   <!-- Background -->
   <rect class="card-bg" x="2" y="2" width="296" height="176" rx="14"/>
   <rect class="card-border" x="2" y="2" width="296" height="176" rx="14"/>
-  
-  <!-- Grid -->
+
+  <!-- Grid pattern -->
   <g opacity="0.03">
     <pattern id="gridS" width="20" height="20" patternUnits="userSpaceOnUse">
       <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#8800ff" stroke-width="0.5"/>
     </pattern>
     <rect x="2" y="2" width="296" height="176" rx="14" fill="url(#gridS)"/>
   </g>
-  
+
   <!-- Glow background -->
-  <ellipse cx="60" cy="72" rx="55" ry="50" fill="url(#simGlow)"/>
-  
+  <ellipse cx="55" cy="70" rx="50" ry="45" fill="url(#simGlow)"/>
+
   <!-- Perspective grid floor -->
-  <g transform="translate(10, 85)" opacity="0.3">
-    <line class="grid-line" x1="0" y1="0" x2="90" y2="0"/>
-    <line class="grid-line" x1="0" y1="10" x2="90" y2="10"/>
-    <line class="grid-line" x1="0" y1="20" x2="90" y2="20"/>
-    <line class="grid-line" x1="15" y1="-15" x2="15" y2="25"/>
-    <line class="grid-line" x1="35" y1="-15" x2="35" y2="25"/>
-    <line class="grid-line" x1="55" y1="-15" x2="55" y2="25"/>
-    <line class="grid-line" x1="75" y1="-15" x2="75" y2="25"/>
+  <g transform="translate(15, 95)" opacity="0.25">
+    <line class="grid-line" x1="0" y1="0" x2="80" y2="0"/>
+    <line class="grid-line" x1="0" y1="10" x2="80" y2="10"/>
+    <line class="grid-line" x1="15" y1="-10" x2="15" y2="15"/>
+    <line class="grid-line" x1="35" y1="-10" x2="35" y2="15"/>
+    <line class="grid-line" x1="55" y1="-10" x2="55" y2="15"/>
+    <line class="grid-line" x1="75" y1="-10" x2="75" y2="15"/>
   </g>
-  
-  <!-- Environment sphere rings (GitHub-compatible pulsing) -->
-  <g transform="translate(60, 72)">
-    <ellipse class="env-ring" cx="0" cy="0" rx="42" ry="18"/>
-    <ellipse class="env-ring env-ring-2" cx="0" cy="0" rx="42" ry="32"/>
-    <ellipse class="env-ring env-ring-3" cx="0" cy="0" rx="32" ry="42"/>
+
+  <!-- Environment sphere rings -->
+  <g transform="translate(55, 65)">
+    <ellipse class="env-ring" cx="0" cy="0" rx="38" ry="16"/>
+    <ellipse class="env-ring env-ring-2" cx="0" cy="0" rx="38" ry="28"/>
+    <ellipse class="env-ring env-ring-3" cx="0" cy="0" rx="28" ry="38"/>
   </g>
-  
-  <!-- 3D Cube with isometric projection -->
-  <g class="cube-container" transform="translate(60, 72)" filter="url(#glow)">
+
+  <!-- 3D Cube with isometric projection - CENTERED AND VISIBLE -->
+  <g transform="translate(55, 65)" filter="url(#glow)">
     <!-- Back face -->
-    <polygon class="cube-face cube-face-side" points="-15,-20 15,-20 25,-10 -5,-10"/>
-    
+    <polygon class="cube-face cube-face-side" points="-12,-16 12,-16 20,-8 -4,-8"/>
+
     <!-- Left face -->
-    <polygon class="cube-face cube-face-side" points="-15,-20 -15,10 -5,20 -5,-10"/>
-    
+    <polygon class="cube-face cube-face-side" points="-12,-16 -12,8 -4,16 -4,-8"/>
+
     <!-- Top face -->
-    <polygon class="cube-face cube-face-top" points="-15,-20 15,-20 25,-10 -5,-10"/>
-    
+    <polygon class="cube-face cube-face-top" points="-12,-16 12,-16 20,-8 -4,-8"/>
+
     <!-- Front face -->
-    <polygon class="cube-face cube-face-front" points="-5,-10 25,-10 25,20 -5,20"/>
-    
+    <polygon class="cube-face cube-face-front" points="-4,-8 20,-8 20,16 -4,16"/>
+
     <!-- Right face -->
-    <polygon class="cube-face cube-face-side" points="15,-20 25,-10 25,20 15,10"/>
-    
-    <!-- Bottom face visible edge -->
-    <polygon class="cube-face cube-face-side" points="-5,20 25,20 15,10 -15,10"/>
-    
+    <polygon class="cube-face cube-face-side" points="12,-16 20,-8 20,16 12,8"/>
+
     <!-- Wireframe edges -->
     <g class="wireframe">
-      <!-- Front face -->
-      <polygon points="-5,-10 25,-10 25,20 -5,20"/>
-      <!-- Back connections -->
-      <line x1="-5" y1="-10" x2="-15" y2="-20"/>
-      <line x1="25" y1="-10" x2="15" y2="-20"/>
-      <line x1="-5" y1="20" x2="-15" y2="10"/>
-      <line x1="25" y1="20" x2="15" y2="10"/>
-      <!-- Back face -->
-      <polygon points="-15,-20 15,-20 15,10 -15,10"/>
+      <polygon points="-4,-8 20,-8 20,16 -4,16"/>
+      <line x1="-4" y1="-8" x2="-12" y2="-16"/>
+      <line x1="20" y1="-8" x2="12" y2="-16"/>
+      <line x1="-4" y1="16" x2="-12" y2="8"/>
+      <line x1="20" y1="16" x2="12" y2="8"/>
+      <polygon points="-12,-16 12,-16 12,8 -12,8"/>
     </g>
-    
-    <!-- Inner structure -->
-    <line x1="10" y1="-5" x2="10" y2="15" stroke="#a855f7" stroke-width="0.5" opacity="0.5"/>
-    <line x1="0" y1="5" x2="20" y2="5" stroke="#a855f7" stroke-width="0.5" opacity="0.5"/>
+
+    <!-- Inner glow lines -->
+    <line x1="8" y1="-2" x2="8" y2="12" stroke="#cc88ff" stroke-width="0.5" opacity="0.6"/>
+    <line x1="0" y1="4" x2="16" y2="4" stroke="#cc88ff" stroke-width="0.5" opacity="0.6"/>
   </g>
-  
+
   <!-- Coordinate axes -->
-  <g transform="translate(60, 72)">
-    <line class="axis axis-x" x1="0" y1="0" x2="32" y2="0"/>
-    <text class="axis-label" x="35" y="3" fill="#ff4444">X</text>
+  <g transform="translate(55, 65)">
+    <line class="axis axis-x" x1="0" y1="0" x2="28" y2="0"/>
+    <text class="axis-label" x="31" y="3" fill="#ff4444">X</text>
 
-    <line class="axis axis-y" x1="0" y1="0" x2="0" y2="-32"/>
-    <text class="axis-label" x="-3" y="-35" fill="#44ff44">Y</text>
+    <line class="axis axis-y" x1="0" y1="0" x2="0" y2="-28"/>
+    <text class="axis-label" x="-3" y="-31" fill="#44ff44">Y</text>
 
-    <line class="axis axis-z" x1="0" y1="0" x2="18" y2="18"/>
-    <text class="axis-label" x="21" y="23" fill="#4488ff">Z</text>
+    <line class="axis axis-z" x1="0" y1="0" x2="16" y2="16"/>
+    <text class="axis-label" x="18" y="20" fill="#4488ff">Z</text>
   </g>
-  
-  <!-- Physics particles (GitHub-compatible orbiting) -->
-  <g transform="translate(60, 72)">
-    <circle class="orbit-particle-1" r="4" fill="#00ffff"/>
-    <circle class="orbit-particle-2" r="3" fill="#ff00ff"/>
-    <circle class="orbit-particle-3" r="3.5" fill="#ffff00"/>
-  </g>
-  
+
+  <!-- Physics particles (static positions with CSS glow animations) -->
+  <circle class="particle-1" cx="85" cy="50" r="4" fill="#00ffff"/>
+  <circle class="particle-2" cx="30" cy="55" r="3" fill="#ff00ff"/>
+  <circle class="particle-3" cx="70" cy="85" r="3.5" fill="#ffff00"/>
+
   <!-- Bouncing particles -->
-  <circle class="bounce-particle" cx="32" cy="105" r="2" fill="#a855f7"/>
-  <circle class="bounce-particle" cx="55" cy="108" r="2.5" fill="#cc88ff" style="animation-delay: 0.3s;"/>
-  <circle class="bounce-particle" cx="78" cy="102" r="2" fill="#8800ff" style="animation-delay: 0.6s;"/>
-  
+  <circle class="bounce-particle" cx="25" cy="105" r="2" fill="#a855f7"/>
+  <circle class="bounce-particle" cx="50" cy="108" r="2.5" fill="#cc88ff" style="animation-delay: 0.3s;"/>
+  <circle class="bounce-particle" cx="75" cy="103" r="2" fill="#8800ff" style="animation-delay: 0.6s;"/>
+
   <!-- Metrics -->
-  <g transform="translate(12, 115)">
+  <g transform="translate(12, 120)">
     <text class="metric" x="0" y="0">FPS: 90</text>
     <text class="metric" x="0" y="10">PHYSICS: ON</text>
     <text class="metric" x="0" y="20">RENDER: RTX</text>
   </g>
-  
+
   <!-- Text content -->
   <text class="title" x="120" y="35">Simulation</text>
-  
+
   <text class="desc" x="120" y="55">Isaac Sim, Unity, Blender</text>
   <text class="desc" x="120" y="70">Real-to-sim transfer pipelines</text>
   <text class="desc" x="120" y="85">Synthetic data generation</text>
   <text class="desc" x="120" y="100">Physics-based RL training</text>
-  
-  <!-- Render stats -->
+
+  <!-- Render stats (CSS animated) -->
   <g transform="translate(120, 110)">
     <rect x="0" y="0" width="80" height="6" fill="#1a2a3a" rx="2"/>
-    <rect x="0" y="0" width="70" height="6" fill="#8800ff" rx="2"/>
+    <rect class="status-bar-1" x="0" y="0" width="70" height="6" rx="2"/>
     <text fill="#8b949e" font-size="7" x="85" y="5" font-family="monospace">RTX</text>
-    
+
     <rect x="0" y="10" width="80" height="6" fill="#1a2a3a" rx="2"/>
-    <rect x="0" y="10" width="55" height="6" fill="#a855f7" rx="2"/>
+    <rect class="status-bar-2" x="0" y="10" width="55" height="6" rx="2"/>
     <text fill="#8b949e" font-size="7" x="85" y="15" font-family="monospace">PhysX</text>
   </g>
-  
+
   <!-- Tags -->
   <g transform="translate(120, 140)">
     <rect class="tag" x="0" y="0" width="50" height="20" fill="#76B900"/>
     <text class="tag-text" x="25" y="14" text-anchor="middle">Isaac</text>
-    
+
     <rect class="tag" x="55" y="0" width="50" height="20" fill="#000000" stroke="#ffffff" stroke-width="0.5"/>
     <text class="tag-text" x="80" y="14" text-anchor="middle">Unity</text>
-    
+
     <rect class="tag" x="110" y="0" width="60" height="20" fill="#ea7600"/>
     <text class="tag-text" x="140" y="14" text-anchor="middle">Blender</text>
   </g>
-  
+
 </svg>
