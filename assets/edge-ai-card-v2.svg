@@ -1,0 +1,287 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
+  <defs>
+    <style>
+      /* ═══════════════════════════════════════════════════════════════════════
+         EDGE AI CARD - ULTIMATE v2.0
+         Advanced: Neural processor visualization, thermal mapping,
+         data pipeline flow, tensor operations, inference metrics
+      ═══════════════════════════════════════════════════════════════════════ */
+      
+      .card-bg { fill: #0a0e14; }
+      
+      /* ─────────────── NEON BORDER ─────────────── */
+      @keyframes border-trace {
+        0% { stroke-dashoffset: 800; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes border-glow-green {
+        0%, 100% {
+          stroke: #76B900;
+          stroke-opacity: 0.8;
+        }
+        50% {
+          stroke: #9acd32;
+          stroke-opacity: 1;
+        }
+      }
+      
+      /* ─────────────── CHIP SYSTEM ─────────────── */
+      @keyframes chip-pulse {
+        0%, 100% {
+          fill: #0d1520;
+          fill-opacity: 0.9;
+        }
+        50% {
+          fill: #1a2a1a;
+          fill-opacity: 1;
+        }
+      }
+      
+      @keyframes core-compute {
+        0%, 100% { opacity: 0.6; }
+        25% { opacity: 1; }
+        50% { opacity: 0.8; }
+        75% { opacity: 1; }
+      }
+      
+      @keyframes tensor-flow {
+        0% { stroke-dashoffset: 100; opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
+      }
+      
+      /* ─────────────── PIN SIGNALS ─────────────── */
+      @keyframes pin-signal {
+        0% { stroke-dashoffset: 15; opacity: 0; }
+        30% { opacity: 1; }
+        70% { opacity: 1; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
+      }
+      
+      @keyframes pin-active {
+        0%, 100% { fill: #333; fill-opacity: 0.6; }
+        50% { fill: #76B900; fill-opacity: 1; }
+      }
+      
+      /* ─────────────── THERMAL VISUALIZATION ─────────────── */
+      @keyframes thermal-pulse {
+        0%, 100% { opacity: 0.1; }
+        50% { opacity: 0.3; }
+      }
+      
+      @keyframes heat-shift {
+        0%, 100% { stop-color: #76B900; }
+        50% { stop-color: #ffaa00; }
+      }
+      
+      /* ─────────────── LED SYSTEM ─────────────── */
+      @keyframes led-sequence {
+        0%, 20% { fill: #222; fill-opacity: 0.5; }
+        25%, 45% { fill: #76B900; fill-opacity: 1; }
+        50%, 100% { fill: #222; fill-opacity: 0.5; }
+      }
+      
+      /* ─────────────── METRICS ─────────────── */
+      @keyframes metric-update {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+      
+      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
+      
+      .card-border {
+        fill: none;
+        stroke-width: 2;
+        stroke-dasharray: 800;
+        animation: border-trace 2s ease-out forwards, border-glow-green 4s ease-in-out infinite 2s;
+      }
+      
+      /* Chip */
+      .chip-body { animation: chip-pulse 3s ease-in-out infinite; }
+      .chip-core { animation: core-compute 2s ease-in-out infinite; }
+      .tensor-path {
+        fill: none;
+        stroke: #76B900;
+        stroke-width: 1;
+        stroke-dasharray: 100;
+        animation: tensor-flow 1.5s linear infinite;
+      }
+      
+      /* Pins */
+      .pin-signal {
+        stroke: #76B900;
+        stroke-width: 2;
+        stroke-dasharray: 15;
+        animation: pin-signal 0.8s linear infinite;
+      }
+      .pin-dot { animation: pin-active 1s ease-in-out infinite; }
+      
+      /* Thermal */
+      .thermal-layer { animation: thermal-pulse 2s ease-in-out infinite; }
+      
+      /* LEDs */
+      .led { animation: led-sequence 2s steps(1) infinite; }
+      .led-2 { animation-delay: 0.25s; }
+      .led-3 { animation-delay: 0.5s; }
+      .led-4 { animation-delay: 0.75s; }
+      .led-5 { animation-delay: 1s; }
+      .led-6 { animation-delay: 1.25s; }
+      
+      /* Text */
+      .title { fill: #ffffff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 700; }
+      .desc { fill: #8b949e; font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; }
+      .metric { fill: #76B900; font-family: 'JetBrains Mono', monospace; font-size: 7px; animation: metric-update 1s ease-in-out infinite; }
+      .tag { rx: 4; }
+      .tag-text { fill: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9px; font-weight: 600; }
+      
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      }
+    </style>
+    
+    <!-- Gradients -->
+    <linearGradient id="borderGradG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#76B900"/>
+      <stop offset="100%" stop-color="#9acd32"/>
+    </linearGradient>
+    
+    <radialGradient id="thermalGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffaa00" stop-opacity="0.4">
+        <animate attributeName="stop-color" values="#ffaa00;#ff6600;#ffaa00" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#76B900" stop-opacity="0"/>
+    </radialGradient>
+    
+    <radialGradient id="chipGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#76B900" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#76B900" stop-opacity="0"/>
+    </radialGradient>
+    
+    <linearGradient id="tensorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#76B900" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#76B900" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#76B900" stop-opacity="0"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="card-bg" x="2" y="2" width="296" height="176" rx="14"/>
+  <rect class="card-border" x="2" y="2" width="296" height="176" rx="14"/>
+  
+  <!-- Grid -->
+  <g opacity="0.03">
+    <pattern id="gridE" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#76B900" stroke-width="0.5"/>
+    </pattern>
+    <rect x="2" y="2" width="296" height="176" rx="14" fill="url(#gridE)"/>
+  </g>
+  
+  <!-- Thermal glow -->
+  <ellipse class="thermal-layer" cx="55" cy="60" rx="55" ry="50" fill="url(#thermalGrad)"/>
+  
+  <!-- Chip glow -->
+  <ellipse cx="55" cy="60" rx="45" ry="40" fill="url(#chipGlow)"/>
+  
+  <!-- Neural Processor Chip -->
+  <g transform="translate(15, 25)" filter="url(#glow)">
+    <!-- Pin signals - Left -->
+    <line class="pin-signal" x1="8" y1="20" x2="-8" y2="20"/>
+    <line class="pin-signal" x1="8" y1="32" x2="-8" y2="32" style="animation-delay: 0.15s;"/>
+    <line class="pin-signal" x1="8" y1="44" x2="-8" y2="44" style="animation-delay: 0.3s;"/>
+    <line class="pin-signal" x1="8" y1="56" x2="-8" y2="56" style="animation-delay: 0.45s;"/>
+    
+    <!-- Pin signals - Right -->
+    <line class="pin-signal" x1="72" y1="20" x2="88" y2="20" style="animation-delay: 0.6s;"/>
+    <line class="pin-signal" x1="72" y1="32" x2="88" y2="32" style="animation-delay: 0.75s;"/>
+    <line class="pin-signal" x1="72" y1="44" x2="88" y2="44" style="animation-delay: 0.9s;"/>
+    <line class="pin-signal" x1="72" y1="56" x2="88" y2="56" style="animation-delay: 1.05s;"/>
+    
+    <!-- Pin signals - Top -->
+    <line class="pin-signal" x1="28" y1="8" x2="28" y2="-8" style="animation-delay: 0.2s;"/>
+    <line class="pin-signal" x1="40" y1="8" x2="40" y2="-8" style="animation-delay: 0.35s;"/>
+    <line class="pin-signal" x1="52" y1="8" x2="52" y2="-8" style="animation-delay: 0.5s;"/>
+    
+    <!-- Pin signals - Bottom -->
+    <line class="pin-signal" x1="28" y1="68" x2="28" y2="83" style="animation-delay: 0.65s;"/>
+    <line class="pin-signal" x1="40" y1="68" x2="40" y2="83" style="animation-delay: 0.8s;"/>
+    <line class="pin-signal" x1="52" y1="68" x2="52" y2="83" style="animation-delay: 0.95s;"/>
+    
+    <!-- Chip body -->
+    <rect class="chip-body" x="8" y="8" width="64" height="60" rx="6" stroke="#76B900" stroke-width="2"/>
+    
+    <!-- Tensor cores visualization -->
+    <g class="chip-core" transform="translate(40, 38)">
+      <!-- Core grid -->
+      <rect x="-20" y="-18" width="40" height="36" fill="none" stroke="#76B900" stroke-width="1" opacity="0.5"/>
+      
+      <!-- Tensor units -->
+      <rect x="-16" y="-14" width="12" height="12" fill="#76B900" opacity="0.3"/>
+      <rect x="4" y="-14" width="12" height="12" fill="#76B900" opacity="0.5"/>
+      <rect x="-16" y="2" width="12" height="12" fill="#76B900" opacity="0.4"/>
+      <rect x="4" y="2" width="12" height="12" fill="#76B900" opacity="0.6"/>
+      
+      <!-- Tensor flow paths -->
+      <path class="tensor-path" d="M -10,-8 L -10,8 L 10,8" style="animation-delay: 0s;"/>
+      <path class="tensor-path" d="M 10,-8 L 10,8 L -10,8" style="animation-delay: 0.5s;"/>
+    </g>
+    
+    <!-- NVIDIA text -->
+    <text x="40" y="64" text-anchor="middle" fill="#76B900" font-family="Arial" font-size="6" font-weight="bold" opacity="0.7">NVIDIA</text>
+    
+    <!-- LED row -->
+    <g transform="translate(16, 72)">
+      <circle class="led" cx="0" cy="0" r="2"/>
+      <circle class="led led-2" cx="8" cy="0" r="2"/>
+      <circle class="led led-3" cx="16" cy="0" r="2"/>
+      <circle class="led led-4" cx="24" cy="0" r="2"/>
+      <circle class="led led-5" cx="32" cy="0" r="2"/>
+      <circle class="led led-6" cx="40" cy="0" r="2"/>
+    </g>
+  </g>
+  
+  <!-- Metrics display -->
+  <g transform="translate(15, 115)">
+    <text class="metric" x="0" y="0">TFLOPS: 275</text>
+    <text class="metric" x="0" y="10">STREAMS: 8</text>
+    <text class="metric" x="0" y="20">PWR: 25W</text>
+  </g>
+  
+  <!-- Text content -->
+  <text class="title" x="120" y="35">Edge AI</text>
+  
+  <text class="desc" x="120" y="55">Production Jetson deployment</text>
+  <text class="desc" x="120" y="70">TensorRT &amp; DeepStream pipelines</text>
+  <text class="desc" x="120" y="85">Custom CUDA kernel optimization</text>
+  <text class="desc" x="120" y="100">Multi-stream inference at scale</text>
+  
+  <!-- Performance bars -->
+  <g transform="translate(120, 110)">
+    <rect x="0" y="0" width="80" height="6" fill="#1a2a3a" rx="2"/>
+    <rect x="0" y="0" width="72" height="6" fill="#76B900" rx="2"/>
+    <text fill="#8b949e" font-size="7" x="85" y="5" font-family="monospace">INT8</text>
+    
+    <rect x="0" y="10" width="80" height="6" fill="#1a2a3a" rx="2"/>
+    <rect x="0" y="10" width="60" height="6" fill="#9acd32" rx="2"/>
+    <text fill="#8b949e" font-size="7" x="85" y="15" font-family="monospace">FP16</text>
+  </g>
+  
+  <!-- Tags -->
+  <g transform="translate(120, 140)">
+    <rect class="tag" x="0" y="0" width="55" height="20" fill="#76B900"/>
+    <text class="tag-text" x="27.5" y="14" text-anchor="middle">Jetson</text>
+    
+    <rect class="tag" x="60" y="0" width="60" height="20" fill="#0088ff"/>
+    <text class="tag-text" x="90" y="14" text-anchor="middle">TensorRT</text>
+    
+    <rect class="tag" x="125" y="0" width="50" height="20" fill="#ff6b35"/>
+    <text class="tag-text" x="150" y="14" text-anchor="middle">CUDA</text>
+  </g>
+  
+</svg>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koca Ventures README Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { color: #58a6ff; margin-bottom: 20px; }
+        h2 { color: #8b949e; margin: 30px 0 15px; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
+        .svg-container {
+            margin: 20px 0;
+            background: #161b22;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .svg-container img { width: 100%; height: auto; display: block; }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card-grid .full-width { grid-column: span 2; text-align: center; }
+        .card-grid .full-width img { max-width: 50%; margin: 0 auto; }
+        .status {
+            background: #238636;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .status.fixed { background: #238636; }
+        .note { color: #8b949e; font-size: 14px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Koca Ventures - GitHub README Preview</h1>
+    <p class="note">Preview of all SVG assets with CSS animations (GitHub compatible)</p>
+
+    <h2>Header <span class="status fixed">BADGES FIXED</span></h2>
+    <div class="svg-container">
+        <img src="assets/ultra-header-v2.svg" alt="Header"/>
+    </div>
+    <p class="note">Fixed: 5 capability badges now visible (AI/CV, Edge AI, Simulation, Hardware, Robotics)</p>
+
+    <h2>Tech Stack Constellation <span class="status fixed">SUBTITLE FIXED</span></h2>
+    <div class="svg-container">
+        <img src="assets/ultra-constellation-v2.svg" alt="Constellation"/>
+    </div>
+    <p class="note">Fixed: "TECH STACK" subtitle increased from 9px to 12px, IoT node repositioned</p>
+
+    <h2>Core Capability Cards</h2>
+    <div class="card-grid">
+        <div class="svg-container">
+            <img src="assets/cv-card-v2.svg" alt="Computer Vision"/>
+            <p class="note" style="padding: 10px;">Fixed: DeepStream tag moved left - no longer cut off</p>
+        </div>
+        <div class="svg-container">
+            <img src="assets/edge-ai-card-v2.svg" alt="Edge AI"/>
+        </div>
+        <div class="svg-container">
+            <img src="assets/simulation-card-v2.svg" alt="Simulation"/>
+        </div>
+        <div class="svg-container">
+            <img src="assets/embedded-card-v2.svg" alt="Embedded"/>
+        </div>
+        <div class="full-width svg-container">
+            <img src="assets/robotics-card-v2.svg" alt="Robotics"/>
+            <p class="note" style="padding: 10px;">Fixed: Target point increased from r=4 to r=6 with glow effect</p>
+        </div>
+    </div>
+
+    <h2>Footer</h2>
+    <div class="svg-container">
+        <img src="assets/ultra-footer-v2.svg" alt="Footer"/>
+    </div>
+
+    <h2>Summary of Fixes Applied</h2>
+    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+        <tr style="background: #21262d;">
+            <th style="padding: 12px; text-align: left; border: 1px solid #30363d;">Issue</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #30363d;">Priority</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #30363d;">Status</th>
+        </tr>
+        <tr>
+            <td style="padding: 12px; border: 1px solid #30363d;">Header badges not visible</td>
+            <td style="padding: 12px; border: 1px solid #30363d;">HIGH</td>
+            <td style="padding: 12px; border: 1px solid #30363d;"><span class="status">FIXED</span></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; border: 1px solid #30363d;">CV card DeepStream tag cut off</td>
+            <td style="padding: 12px; border: 1px solid #30363d;">HIGH</td>
+            <td style="padding: 12px; border: 1px solid #30363d;"><span class="status">FIXED</span></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; border: 1px solid #30363d;">TECH STACK subtitle too small</td>
+            <td style="padding: 12px; border: 1px solid #30363d;">MEDIUM</td>
+            <td style="padding: 12px; border: 1px solid #30363d;"><span class="status">FIXED</span></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; border: 1px solid #30363d;">IoT node not visible</td>
+            <td style="padding: 12px; border: 1px solid #30363d;">MEDIUM</td>
+            <td style="padding: 12px; border: 1px solid #30363d;"><span class="status">FIXED</span></td>
+        </tr>
+        <tr>
+            <td style="padding: 12px; border: 1px solid #30363d;">Robotics target point too small</td>
+            <td style="padding: 12px; border: 1px solid #30363d;">LOW</td>
+            <td style="padding: 12px; border: 1px solid #30363d;"><span class="status">FIXED</span></td>
+        </tr>
+    </table>
+
+    <p class="note" style="margin-top: 40px; text-align: center;">
+        Open <code>preview.html</code> in a browser to see all animations in action.<br>
+        Total SVG size: ~57KB (well under GitHub's 512KB limit)
+    </p>
+</body>
+</html>

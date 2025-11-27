@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340">
+  <defs>
+    <style>
+      /* ═══════════════════════════════════════════════════════════════════════
+         TECH STACK - PROFESSIONAL v2.0
+         Clean, enterprise-grade technology showcase
+      ═══════════════════════════════════════════════════════════════════════ */
+
+      .bg { fill: #0a0e14; }
+
+      /* Subtle glow animation */
+      @keyframes subtle-pulse {
+        0%, 100% { opacity: 0.9; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes ring-pulse {
+        0%, 100% { stroke-opacity: 0.3; }
+        50% { stroke-opacity: 0.6; }
+      }
+
+      /* Tech node styling */
+      .tech-card {
+        animation: subtle-pulse 3s ease-in-out infinite;
+      }
+
+      .node-circle {
+        fill: #0d1520;
+        stroke: #1e2d3d;
+        stroke-width: 2;
+      }
+
+      .node-ring {
+        fill: none;
+        stroke-width: 2;
+        animation: ring-pulse 2.5s ease-in-out infinite;
+      }
+
+      .node-icon {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-weight: 700;
+        text-anchor: middle;
+      }
+
+      .node-label {
+        fill: #8b949e;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-size: 10px;
+        text-anchor: middle;
+      }
+
+      .section-title {
+        fill: #6b7b8b;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        text-anchor: middle;
+        letter-spacing: 2px;
+      }
+
+      .main-title {
+        fill: #ffffff;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .sub-title {
+        fill: #00ff88;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        letter-spacing: 3px;
+      }
+
+      .divider {
+        stroke: #1e2d3d;
+        stroke-width: 1;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00ff88" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="900" height="340"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.03">
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00ff88" stroke-width="0.5"/>
+    </pattern>
+    <rect width="900" height="340" fill="url(#grid)"/>
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(450, 35)">
+    <text class="main-title" x="0" y="0" text-anchor="middle">TECHNOLOGY STACK</text>
+    <text class="sub-title" x="0" y="22" text-anchor="middle">KOCA VENTURES</text>
+    <line x1="-120" y1="35" x2="120" y2="35" stroke="url(#headerGrad)" stroke-width="2"/>
+  </g>
+
+  <!-- ROW 1: AI/ML (left) + ROBOTICS (right) -->
+  <g transform="translate(0, 100)">
+    <!-- AI/ML Section -->
+    <text class="section-title" x="225" y="0" fill="#ff6b35">AI / MACHINE LEARNING</text>
+
+    <!-- PyTorch -->
+    <g class="tech-card" transform="translate(100, 45)">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#ff6b35"/>
+      <text class="node-icon" y="5" fill="#ff6b35" font-size="10">PyTorch</text>
+      <text class="node-label" y="48">Deep Learning</text>
+    </g>
+
+    <!-- TensorRT -->
+    <g class="tech-card" transform="translate(185, 45)" style="animation-delay: 0.15s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#76B900"/>
+      <text class="node-icon" y="5" fill="#76B900" font-size="9">TensorRT</text>
+      <text class="node-label" y="48">Inference</text>
+    </g>
+
+    <!-- YOLO -->
+    <g class="tech-card" transform="translate(270, 45)" style="animation-delay: 0.3s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#00ff88"/>
+      <circle cx="0" cy="-2" r="9" fill="none" stroke="#00ff88" stroke-width="2"/>
+      <circle cx="0" cy="-2" r="4" fill="#00ff88"/>
+      <text class="node-label" y="48">Detection</text>
+    </g>
+
+    <!-- CUDA -->
+    <g class="tech-card" transform="translate(355, 45)" style="animation-delay: 0.45s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#0088ff"/>
+      <text class="node-icon" y="5" fill="#0088ff" font-size="11">CUDA</text>
+      <text class="node-label" y="48">GPU Compute</text>
+    </g>
+
+    <!-- Divider -->
+    <line class="divider" x1="450" y1="-10" x2="450" y2="100"/>
+
+    <!-- ROBOTICS Section -->
+    <text class="section-title" x="675" y="0" fill="#ffffff">ROBOTICS</text>
+
+    <!-- ROS2 -->
+    <g class="tech-card" transform="translate(545, 45)">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#ffffff"/>
+      <text class="node-icon" y="5" fill="#ffffff" font-size="11">ROS2</text>
+      <text class="node-label" y="48">Framework</text>
+    </g>
+
+    <!-- Jetson -->
+    <g class="tech-card" transform="translate(630, 45)" style="animation-delay: 0.2s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#76B900"/>
+      <rect x="-7" y="-7" width="14" height="14" fill="none" stroke="#76B900" stroke-width="2"/>
+      <circle cx="0" cy="0" r="3" fill="#76B900"/>
+      <text class="node-label" y="48">Edge AI</text>
+    </g>
+
+    <!-- Teensy -->
+    <g class="tech-card" transform="translate(715, 45)" style="animation-delay: 0.35s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#0088ff"/>
+      <rect x="-7" y="-9" width="14" height="6" fill="none" stroke="#0088ff" stroke-width="1.5"/>
+      <rect x="-7" y="3" width="14" height="6" fill="none" stroke="#0088ff" stroke-width="1.5"/>
+      <text class="node-label" y="48">MCU</text>
+    </g>
+
+    <!-- IoT -->
+    <g class="tech-card" transform="translate(800, 45)" style="animation-delay: 0.5s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#00d4aa"/>
+      <circle cx="0" cy="0" r="5" fill="#00d4aa"/>
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#00d4aa" stroke-width="1" opacity="0.6"/>
+      <text class="node-label" y="48">IoT</text>
+    </g>
+  </g>
+
+  <!-- ROW 2: SIMULATION (left) + INFRASTRUCTURE (right) -->
+  <g transform="translate(0, 220)">
+    <!-- SIMULATION Section -->
+    <text class="section-title" x="225" y="0" fill="#a855f7">SIMULATION</text>
+
+    <!-- Isaac Sim -->
+    <g class="tech-card" transform="translate(100, 45)">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#76B900"/>
+      <text class="node-icon" y="5" fill="#76B900" font-size="9">ISAAC</text>
+      <text class="node-label" y="48">Physics Sim</text>
+    </g>
+
+    <!-- Unity -->
+    <g class="tech-card" transform="translate(185, 45)" style="animation-delay: 0.15s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#a855f7"/>
+      <polygon points="0,-9 9,5 -9,5" fill="none" stroke="#a855f7" stroke-width="2"/>
+      <text class="node-label" y="48">Real-time 3D</text>
+    </g>
+
+    <!-- Blender -->
+    <g class="tech-card" transform="translate(270, 45)" style="animation-delay: 0.3s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#ea7600"/>
+      <circle cx="0" cy="0" r="7" fill="none" stroke="#ea7600" stroke-width="2"/>
+      <circle cx="0" cy="0" r="3" fill="#ea7600"/>
+      <text class="node-label" y="48">3D Assets</text>
+    </g>
+
+    <!-- Synth Data -->
+    <g class="tech-card" transform="translate(355, 45)" style="animation-delay: 0.45s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#00ffff"/>
+      <rect x="-8" y="-6" width="16" height="12" fill="none" stroke="#00ffff" stroke-width="1.5"/>
+      <line x1="-4" y1="0" x2="4" y2="0" stroke="#00ffff" stroke-width="1.5"/>
+      <text class="node-label" y="48">Synth Data</text>
+    </g>
+
+    <!-- Divider -->
+    <line class="divider" x1="450" y1="-10" x2="450" y2="100"/>
+
+    <!-- INFRASTRUCTURE Section -->
+    <text class="section-title" x="675" y="0" fill="#2496ED">INFRASTRUCTURE</text>
+
+    <!-- Docker -->
+    <g class="tech-card" transform="translate(545, 45)">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#2496ED"/>
+      <text class="node-icon" y="5" fill="#2496ED" font-size="9">Docker</text>
+      <text class="node-label" y="48">Containers</text>
+    </g>
+
+    <!-- AWS -->
+    <g class="tech-card" transform="translate(630, 45)" style="animation-delay: 0.2s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#ff9900"/>
+      <text class="node-icon" y="5" fill="#ff9900" font-size="11">AWS</text>
+      <text class="node-label" y="48">Cloud</text>
+    </g>
+
+    <!-- PostgreSQL -->
+    <g class="tech-card" transform="translate(715, 45)" style="animation-delay: 0.35s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#336791"/>
+      <text class="node-icon" y="5" fill="#336791" font-size="8">PgSQL</text>
+      <text class="node-label" y="48">Database</text>
+    </g>
+
+    <!-- Redis -->
+    <g class="tech-card" transform="translate(800, 45)" style="animation-delay: 0.5s;">
+      <circle class="node-circle" r="26"/>
+      <circle class="node-ring" r="32" stroke="#DC382D"/>
+      <text class="node-icon" y="5" fill="#DC382D" font-size="9">Redis</text>
+      <text class="node-label" y="48">Cache</text>
+    </g>
+  </g>
+
+  <!-- Bottom accent line -->
+  <line x1="50" y1="325" x2="850" y2="325" stroke="url(#headerGrad)" stroke-width="1"/>
+
+</svg>

@@ -1,0 +1,334 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
+  <defs>
+    <style>
+      /* ═══════════════════════════════════════════════════════════════════════
+         COMPUTER VISION CARD - ULTIMATE v2.0
+         Advanced: Multi-layer eye scan, neon glow system, HUD targeting,
+         data stream visualization, iris recognition animation
+      ═══════════════════════════════════════════════════════════════════════ */
+      
+      .card-bg { fill: #0a0e14; }
+      
+      /* ─────────────── NEON BORDER SYSTEM ─────────────── */
+      @keyframes border-trace {
+        0% { stroke-dashoffset: 800; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes border-glow {
+        0%, 100% { 
+          stroke: #00ff88;
+          filter: drop-shadow(0 0 3px #00ff88) drop-shadow(0 0 8px #00ff88);
+        }
+        50% { 
+          stroke: #00ffff;
+          filter: drop-shadow(0 0 5px #00ffff) drop-shadow(0 0 15px #00ffff);
+        }
+      }
+      
+      /* ─────────────── EYE SCANNING SYSTEM ─────────────── */
+      @keyframes iris-scan {
+        0%, 100% { transform: translateY(-18px); opacity: 0.3; }
+        50% { transform: translateY(18px); opacity: 1; }
+      }
+      
+      @keyframes iris-pulse {
+        0%, 100% {
+          opacity: 0.8;
+          stroke-width: 0;
+        }
+        50% {
+          opacity: 1;
+          stroke-width: 2;
+        }
+      }
+
+      @keyframes pupil-focus {
+        0%, 100% { opacity: 1; }
+        30% { opacity: 0.6; }
+        70% { opacity: 1; }
+      }
+      
+      @keyframes eye-blink {
+        0%, 45%, 55%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+
+      @keyframes retina-pattern {
+        0% { stroke-dashoffset: 0; opacity: 0.8; }
+        50% { stroke-dashoffset: 50; opacity: 1; }
+        100% { stroke-dashoffset: 100; opacity: 0.8; }
+      }
+      
+      /* ─────────────── PULSE RINGS ─────────────── */
+      @keyframes detection-ring {
+        0% {
+          opacity: 0.8;
+          stroke-width: 3;
+          stroke-dasharray: 125.6;
+        }
+        100% {
+          opacity: 0;
+          stroke-width: 0.5;
+          stroke-dasharray: 314;
+        }
+      }
+      
+      /* ─────────────── HUD TARGETING ─────────────── */
+      @keyframes target-rotate {
+        0% { stroke-dashoffset: 0; opacity: 0.8; }
+        50% { stroke-dashoffset: -30; opacity: 1; }
+        100% { stroke-dashoffset: -60; opacity: 0.8; }
+      }
+      
+      @keyframes target-bracket {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes data-flow {
+        0% { stroke-dashoffset: 50; opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { stroke-dashoffset: 0; opacity: 0; }
+      }
+      
+      /* ─────────────── RECOGNITION BARS ─────────────── */
+      @keyframes bar-fill {
+        0% { width: 0; }
+        100% { width: 100%; }
+      }
+      
+      @keyframes bar-pulse {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+      
+      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
+      
+      .card-border {
+        fill: none;
+        stroke-width: 2;
+        stroke-dasharray: 800;
+        animation: border-trace 2s ease-out forwards, border-glow 4s ease-in-out infinite 2s;
+      }
+      
+      /* Eye components */
+      .eye-container {
+        animation: eye-blink 6s ease-in-out infinite;
+      }
+      .eye-outer { fill: none; stroke: #00ff88; stroke-width: 2; }
+      .iris {
+        fill: url(#irisGrad);
+        stroke: #00ffff;
+        animation: iris-pulse 2s ease-in-out infinite;
+      }
+      .pupil { fill: #0a0e14; animation: pupil-focus 3s ease-in-out infinite; }
+      .pupil-highlight { fill: #00ff88; }
+      .scan-line { 
+        stroke: #00ff88; 
+        stroke-width: 2;
+        animation: iris-scan 2s ease-in-out infinite;
+      }
+      .retina-ring {
+        fill: none;
+        stroke: #00ff88;
+        stroke-width: 0.5;
+        stroke-dasharray: 10 5;
+        animation: retina-pattern 10s linear infinite;
+      }
+      
+      /* Detection rings */
+      .detect-ring { 
+        fill: none; 
+        stroke: #00ff88;
+        animation: detection-ring 2s ease-out infinite;
+      }
+      
+      /* HUD targeting */
+      .target-ring {
+        fill: none;
+        stroke: #00ff88;
+        stroke-width: 1;
+        stroke-dasharray: 10 5;
+        animation: target-rotate 8s linear infinite;
+      }
+      .target-bracket { animation: target-bracket 1.5s ease-in-out infinite; }
+      
+      /* Data streams */
+      .data-stream {
+        fill: none;
+        stroke: #00ff88;
+        stroke-width: 1;
+        stroke-dasharray: 50;
+        animation: data-flow 2s linear infinite;
+      }
+      
+      /* Recognition bars */
+      .bar-bg { fill: #1a2a3a; rx: 2; }
+      .bar-fill { fill: url(#barGrad); animation: bar-pulse 2s ease-in-out infinite; }
+      .bar-text { fill: #8b949e; font-family: 'JetBrains Mono', monospace; font-size: 7px; }
+      
+      /* Text */
+      .title { 
+        fill: #ffffff; 
+        font-family: 'Segoe UI', Arial, sans-serif; 
+        font-size: 16px; 
+        font-weight: 700;
+        filter: drop-shadow(0 0 5px rgba(0,255,136,0.3));
+      }
+      .desc { fill: #8b949e; font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; }
+      
+      /* Tags */
+      .tag { rx: 4; }
+      .tag-text { fill: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9px; font-weight: 600; }
+      
+      /* HUD text */
+      .hud-text { 
+        fill: #00ff88; 
+        font-family: 'JetBrains Mono', monospace; 
+        font-size: 6px;
+        opacity: 0.7;
+      }
+      
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      }
+    </style>
+    
+    <!-- Gradients -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="50%" stop-color="#00ffff"/>
+      <stop offset="100%" stop-color="#0088ff"/>
+    </linearGradient>
+    
+    <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ffff"/>
+      <stop offset="70%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#008844"/>
+    </radialGradient>
+    
+    <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="100%" stop-color="#0088ff"/>
+    </linearGradient>
+    
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="card-bg" x="2" y="2" width="296" height="176" rx="14"/>
+  
+  <!-- Animated border -->
+  <rect class="card-border" x="2" y="2" width="296" height="176" rx="14"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.03">
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#00ff88" stroke-width="0.5"/>
+    </pattern>
+    <rect x="2" y="2" width="296" height="176" rx="14" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Eye glow background -->
+  <ellipse cx="55" cy="55" rx="50" ry="45" fill="url(#eyeGlow)"/>
+  
+  <!-- Detection rings -->
+  <g transform="translate(55, 55)" filter="url(#glow)">
+    <circle class="detect-ring" r="35"/>
+    <circle class="detect-ring" r="35" style="animation-delay: 0.7s;"/>
+    <circle class="detect-ring" r="35" style="animation-delay: 1.4s;"/>
+  </g>
+  
+  <!-- HUD Targeting system -->
+  <g transform="translate(55, 55)">
+    <!-- Rotating target ring -->
+    <circle class="target-ring" r="40"/>
+    
+    <!-- Target brackets -->
+    <g class="target-bracket">
+      <path d="M -35,-35 L -35,-25 M -35,-35 L -25,-35" fill="none" stroke="#00ff88" stroke-width="1"/>
+      <path d="M 35,-35 L 35,-25 M 35,-35 L 25,-35" fill="none" stroke="#00ff88" stroke-width="1"/>
+      <path d="M -35,35 L -35,25 M -35,35 L -25,35" fill="none" stroke="#00ff88" stroke-width="1"/>
+      <path d="M 35,35 L 35,25 M 35,35 L 25,35" fill="none" stroke="#00ff88" stroke-width="1"/>
+    </g>
+    
+    <!-- Crosshairs -->
+    <line x1="-45" y1="0" x2="-30" y2="0" stroke="#00ff88" stroke-width="0.5" opacity="0.5"/>
+    <line x1="30" y1="0" x2="45" y2="0" stroke="#00ff88" stroke-width="0.5" opacity="0.5"/>
+    <line x1="0" y1="-45" x2="0" y2="-30" stroke="#00ff88" stroke-width="0.5" opacity="0.5"/>
+    <line x1="0" y1="30" x2="0" y2="45" stroke="#00ff88" stroke-width="0.5" opacity="0.5"/>
+  </g>
+  
+  <!-- Eye with scanning effect -->
+  <g class="eye-container" transform="translate(55, 55)" filter="url(#glow)">
+    <!-- Retina pattern (rotating) -->
+    <circle class="retina-ring" r="22"/>
+    <circle class="retina-ring" r="18" style="animation-direction: reverse;"/>
+    
+    <!-- Eye outline -->
+    <ellipse class="eye-outer" cx="0" cy="0" rx="25" ry="18"/>
+    
+    <!-- Iris -->
+    <circle class="iris" cx="0" cy="0" r="14"/>
+    
+    <!-- Pupil -->
+    <circle class="pupil" cx="0" cy="0" r="5"/>
+    <circle class="pupil-highlight" cx="2" cy="-3" r="2"/>
+    
+    <!-- Scan line -->
+    <line class="scan-line" x1="-20" y1="0" x2="20" y2="0"/>
+  </g>
+  
+  <!-- Data streams -->
+  <g>
+    <path class="data-stream" d="M 85,40 L 110,40" style="animation-delay: 0s;"/>
+    <path class="data-stream" d="M 85,55 L 115,55" style="animation-delay: 0.3s;"/>
+    <path class="data-stream" d="M 85,70 L 105,70" style="animation-delay: 0.6s;"/>
+  </g>
+  
+  <!-- HUD data -->
+  <text class="hud-text" x="15" y="105">DETECTION: 99.7%</text>
+  <text class="hud-text" x="15" y="115">FPS: 120</text>
+  
+  <!-- Text content -->
+  <text class="title" x="120" y="35">Computer Vision</text>
+  
+  <text class="desc" x="120" y="55">Government-grade surveillance</text>
+  <text class="desc" x="120" y="70">End-to-end vision pipelines</text>
+  <text class="desc" x="120" y="85">Multi-sensor fusion systems</text>
+  <text class="desc" x="120" y="100">Edge inference at scale</text>
+  
+  <!-- Recognition bars -->
+  <g transform="translate(120, 110)">
+    <rect class="bar-bg" x="0" y="0" width="80" height="8"/>
+    <rect class="bar-fill" x="0" y="0" width="76" height="8" rx="2"/>
+    <text class="bar-text" x="85" y="7">95%</text>
+    
+    <rect class="bar-bg" x="0" y="12" width="80" height="8"/>
+    <rect class="bar-fill" x="0" y="12" width="68" height="8" rx="2" style="animation-delay: 0.3s;"/>
+    <text class="bar-text" x="85" y="19">85%</text>
+  </g>
+  
+  <!-- Tags - adjusted positions to prevent cutoff -->
+  <g transform="translate(120, 140)">
+    <rect class="tag" x="0" y="0" width="45" height="20" fill="#238636"/>
+    <text class="tag-text" x="22.5" y="14" text-anchor="middle">YOLO</text>
+
+    <rect class="tag" x="50" y="0" width="55" height="20" fill="#0088ff"/>
+    <text class="tag-text" x="77.5" y="14" text-anchor="middle">TensorRT</text>
+
+    <rect class="tag" x="110" y="0" width="65" height="20" fill="#76B900"/>
+    <text class="tag-text" x="142.5" y="14" text-anchor="middle">DeepStream</text>
+  </g>
+  
+</svg>

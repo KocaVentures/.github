@@ -1,0 +1,450 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220">
+  <defs>
+    <style>
+      /* ═══════════════════════════════════════════════════════════════════════
+         KOCA VENTURES - ULTIMATE HEADER v2.0
+         Advanced techniques: Layered neon, HUD brackets, path reveals,
+         chromatic aberration, noise texture, staggered choreography
+      ═══════════════════════════════════════════════════════════════════════ */
+      
+      .bg { fill: #0a0e14; }
+      
+      /* ─────────────── LAYERED NEON GLOW SYSTEM ─────────────── */
+      @keyframes neon-flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+          filter: drop-shadow(0 0 5px #00ff88) 
+                  drop-shadow(0 0 15px #00ff88) 
+                  drop-shadow(0 0 30px #00ff88)
+                  drop-shadow(0 0 60px #00ff88);
+        }
+        20%, 24%, 55% {
+          filter: drop-shadow(0 0 2px #00ff88) 
+                  drop-shadow(0 0 5px #00ff88);
+        }
+      }
+      
+      @keyframes neon-breathe {
+        0%, 100% {
+          filter: drop-shadow(0 0 5px #00ff88) 
+                  drop-shadow(0 0 20px #00ff88) 
+                  drop-shadow(0 0 40px #00ff88);
+        }
+        50% {
+          filter: drop-shadow(0 0 10px #00ff88) 
+                  drop-shadow(0 0 40px #00ff88) 
+                  drop-shadow(0 0 80px #00ff88)
+                  drop-shadow(0 0 120px rgba(0,255,136,0.5));
+        }
+      }
+      
+      /* ─────────────── CHROMATIC ABERRATION GLITCH ─────────────── */
+      @keyframes glitch-clip-1 {
+        0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+        5% { clip-path: inset(40% 0 20% 0); transform: translate(-4px, 2px); }
+        10% { clip-path: inset(10% 0 60% 0); transform: translate(4px, -2px); }
+        15% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 1px); }
+        20% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      }
+      
+      @keyframes glitch-clip-2 {
+        0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+        7% { clip-path: inset(20% 0 50% 0); transform: translate(3px, -1px); }
+        12% { clip-path: inset(60% 0 10% 0); transform: translate(-3px, 1px); }
+        17% { clip-path: inset(5% 0 85% 0); transform: translate(2px, -2px); }
+        22% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      }
+      
+      @keyframes chromatic-shift {
+        0%, 90%, 100% { transform: translate(0); opacity: 0; }
+        92% { transform: translate(-3px, 0); opacity: 0.8; }
+        94% { transform: translate(3px, 0); opacity: 0.8; }
+        96% { transform: translate(-2px, 1px); opacity: 0.6; }
+        98% { transform: translate(2px, -1px); opacity: 0.4; }
+      }
+      
+      /* ─────────────── HUD BRACKET ANIMATIONS ─────────────── */
+      @keyframes bracket-draw {
+        0% { stroke-dashoffset: 100; opacity: 0; }
+        20% { opacity: 1; }
+        100% { stroke-dashoffset: 0; opacity: 1; }
+      }
+      
+      @keyframes bracket-pulse {
+        0%, 100% { stroke-opacity: 0.6; }
+        50% { stroke-opacity: 1; }
+      }
+      
+      /* ─────────────── TYPING WITH STEPS ─────────────── */
+      @keyframes typing-reveal {
+        0% { width: 0; }
+        100% { width: 100%; }
+      }
+      
+      @keyframes cursor-blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      
+      @keyframes cursor-move {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(340px); }
+      }
+      
+      /* ─────────────── SCANLINE SYSTEM ─────────────── */
+      @keyframes scanline-move {
+        0% { transform: translateY(-220px); opacity: 0; }
+        5% { opacity: 0.5; }
+        95% { opacity: 0.5; }
+        100% { transform: translateY(220px); opacity: 0; }
+      }
+      
+      @keyframes scanline-static {
+        0% { opacity: 0.03; }
+        50% { opacity: 0.06; }
+        100% { opacity: 0.03; }
+      }
+      
+      /* ─────────────── PARTICLE SYSTEM ─────────────── */
+      @keyframes particle-float {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 0.8; }
+        100% { transform: translateY(-180px) scale(0.3); opacity: 0; }
+      }
+      
+      @keyframes particle-drift {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(10px); }
+      }
+      
+      /* ─────────────── CIRCUIT PATH DRAWING ─────────────── */
+      @keyframes circuit-draw {
+        0% { stroke-dashoffset: 200; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes node-appear {
+        0% { r: 0; opacity: 0; }
+        50% { opacity: 1; }
+        100% { r: 3; opacity: 1; }
+      }
+      
+      /* ─────────────── HEXAGON MORPH - GITHUB COMPATIBLE ─────────────── */
+      @keyframes hex-breathe-github {
+        0%, 100% { stroke-opacity: 0.3; stroke-width: 1; }
+        50% { stroke-opacity: 0.6; stroke-width: 1.5; }
+      }
+      
+      /* ─────────────── BADGE CHOREOGRAPHY ─────────────── */
+      @keyframes badge-pop {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1) translateY(-2px); }
+        100% { transform: scale(1) translateY(0); opacity: 1; }
+      }
+      
+      /* ─────────────── GRADIENT ANIMATION ─────────────── */
+      @keyframes gradient-shift {
+        0% { stop-color: #00ff88; }
+        25% { stop-color: #00ffff; }
+        50% { stop-color: #0088ff; }
+        75% { stop-color: #8800ff; }
+        100% { stop-color: #00ff88; }
+      }
+      
+      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
+      
+      /* Main title with neon */
+      .title-main {
+        font-family: 'Segoe UI', 'Arial Black', sans-serif;
+        font-size: 56px;
+        font-weight: 900;
+        letter-spacing: 12px;
+        fill: #ffffff;
+        animation: neon-breathe 3s ease-in-out infinite;
+      }
+      
+      /* Glitch layers */
+      .title-glitch-r {
+        font-family: 'Segoe UI', 'Arial Black', sans-serif;
+        font-size: 56px;
+        font-weight: 900;
+        letter-spacing: 12px;
+        fill: #ff0040;
+        animation: glitch-clip-1 4s infinite, chromatic-shift 4s infinite;
+      }
+      
+      .title-glitch-c {
+        font-family: 'Segoe UI', 'Arial Black', sans-serif;
+        font-size: 56px;
+        font-weight: 900;
+        letter-spacing: 12px;
+        fill: #00ffff;
+        animation: glitch-clip-2 4s infinite 0.1s, chromatic-shift 4s infinite 0.1s;
+      }
+      
+      /* Subtitle - visible by default */
+      .subtitle-container {
+        opacity: 1;
+      }
+      
+      .subtitle {
+        font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+        fill: #8b949e;
+        letter-spacing: 2px;
+      }
+      
+      .cursor {
+        display: none;
+      }
+      
+      /* HUD Brackets */
+      .hud-bracket {
+        fill: none;
+        stroke: #00ff88;
+        stroke-width: 2;
+        stroke-dasharray: 100;
+        animation: bracket-draw 1.5s ease-out forwards, bracket-pulse 2s ease-in-out infinite 1.5s;
+      }
+      .hud-bracket-2 { stroke: #0088ff; animation-delay: 0.2s, 1.7s; }
+      .hud-bracket-3 { stroke: #00ff88; opacity: 0.5; animation-delay: 0.4s, 1.9s; }
+      
+      /* Scanlines */
+      .scanline-moving {
+        fill: url(#scanlineGrad);
+        animation: scanline-move 2.5s linear infinite;
+      }
+      .scanline-static {
+        fill: url(#staticPattern);
+        animation: scanline-static 0.1s step-end infinite;
+      }
+      
+      /* Particles */
+      .particle { animation: particle-float 5s ease-out infinite, particle-drift 3s ease-in-out infinite; }
+      
+      /* Circuits */
+      .circuit-path {
+        fill: none;
+        stroke: #00ff88;
+        stroke-width: 1;
+        stroke-dasharray: 200;
+        animation: circuit-draw 2s ease-out forwards;
+        opacity: 0.6;
+      }
+      .circuit-node {
+        fill: #00ff88;
+        animation: node-appear 0.5s ease-out forwards;
+      }
+      
+      /* Hexagons - GitHub Compatible (no rotation, only breathing) */
+      .hex-outer {
+        fill: none;
+        stroke: #00ff88;
+        stroke-width: 1;
+        animation: hex-breathe-github 4s ease-in-out infinite;
+      }
+      .hex-inner {
+        animation: hex-breathe-github 4s ease-in-out infinite 0.5s;
+        stroke: #0088ff;
+      }
+      
+      /* Badges - GitHub-Compatible System (no CSS variables) */
+      .badge-group {
+        opacity: 1;
+      }
+      .badge-1 { animation: badge-glow-green 3s ease-in-out infinite; }
+      .badge-2 { animation: badge-glow-blue 3s ease-in-out infinite 0.2s; }
+      .badge-3 { animation: badge-glow-purple 3s ease-in-out infinite 0.4s; }
+      .badge-4 { animation: badge-glow-orange 3s ease-in-out infinite 0.6s; }
+      .badge-5 { animation: badge-glow-pink 3s ease-in-out infinite 0.8s; }
+
+      @keyframes badge-glow-green {
+        0%, 100% { filter: drop-shadow(0 0 3px #238636); }
+        50% { filter: drop-shadow(0 0 10px #238636); }
+      }
+      @keyframes badge-glow-blue {
+        0%, 100% { filter: drop-shadow(0 0 3px #0088ff); }
+        50% { filter: drop-shadow(0 0 10px #0088ff); }
+      }
+      @keyframes badge-glow-purple {
+        0%, 100% { filter: drop-shadow(0 0 3px #8800ff); }
+        50% { filter: drop-shadow(0 0 10px #8800ff); }
+      }
+      @keyframes badge-glow-orange {
+        0%, 100% { filter: drop-shadow(0 0 3px #f97316); }
+        50% { filter: drop-shadow(0 0 10px #f97316); }
+      }
+      @keyframes badge-glow-pink {
+        0%, 100% { filter: drop-shadow(0 0 3px #ec4899); }
+        50% { filter: drop-shadow(0 0 10px #ec4899); }
+      }
+      
+      .badge { rx: 4; }
+      .badge-text { fill: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 11px; font-weight: 600; }
+      
+      /* Gradient animations */
+      #neonGradient stop:nth-child(1) { animation: gradient-shift 8s ease-in-out infinite; }
+      #neonGradient stop:nth-child(2) { animation: gradient-shift 8s ease-in-out infinite 2s; }
+      #neonGradient stop:nth-child(3) { animation: gradient-shift 8s ease-in-out infinite 4s; }
+      
+      /* Noise texture */
+      .noise { opacity: 0.02; }
+      
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+    
+    <!-- Gradients -->
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff88"/>
+      <stop offset="50%" stop-color="#00ffff"/>
+      <stop offset="100%" stop-color="#0088ff"/>
+    </linearGradient>
+    
+    <linearGradient id="scanlineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00ff88" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </linearGradient>
+    
+    <radialGradient id="glowCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff88" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Noise pattern -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    
+    <!-- Static pattern for scanlines -->
+    <pattern id="staticPattern" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#00ff88" opacity="0.1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="bg" width="900" height="220"/>
+  
+  <!-- Noise texture overlay -->
+  <rect class="noise" width="900" height="220" filter="url(#noise)"/>
+  
+  <!-- Central glow -->
+  <ellipse cx="450" cy="90" rx="300" ry="100" fill="url(#glowCenter)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.03">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00ff88" stroke-width="0.5"/>
+    </pattern>
+    <rect width="900" height="220" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Animated hexagons -->
+  <g transform="translate(70, 110)">
+    <polygon class="hex-outer" points="35,0 70,20 70,60 35,80 0,60 0,20" transform="translate(-35,-40)"/>
+    <polygon class="hex-outer hex-inner" points="25,0 50,14 50,43 25,58 0,43 0,14" transform="translate(-25,-29)"/>
+  </g>
+  <g transform="translate(830, 110)">
+    <polygon class="hex-outer" points="30,0 60,17 60,52 30,69 0,52 0,17" transform="translate(-30,-35)"/>
+    <polygon class="hex-outer hex-inner" points="20,0 40,12 40,35 20,46 0,35 0,12" transform="translate(-20,-23)"/>
+  </g>
+  
+  <!-- HUD Brackets -->
+  <g class="hud-brackets">
+    <!-- Top left -->
+    <path class="hud-bracket" d="M 30,50 L 30,30 L 60,30"/>
+    <path class="hud-bracket-2" d="M 35,55 L 35,35 L 65,35"/>
+    <!-- Top right -->
+    <path class="hud-bracket" d="M 870,50 L 870,30 L 840,30"/>
+    <path class="hud-bracket-2" d="M 865,55 L 865,35 L 835,35"/>
+    <!-- Bottom left -->
+    <path class="hud-bracket" d="M 30,170 L 30,190 L 60,190"/>
+    <path class="hud-bracket-3" d="M 35,165 L 35,185 L 65,185"/>
+    <!-- Bottom right -->
+    <path class="hud-bracket" d="M 870,170 L 870,190 L 840,190"/>
+    <path class="hud-bracket-3" d="M 865,165 L 865,185 L 835,185"/>
+  </g>
+  
+  <!-- Circuit paths -->
+  <g class="circuits">
+    <path class="circuit-path" d="M 50,80 L 90,80 L 90,60 L 130,60" style="animation-delay: 0.5s;"/>
+    <circle class="circuit-node" cx="130" cy="60" r="0" style="animation-delay: 1s;"/>
+    
+    <path class="circuit-path" d="M 850,140 L 810,140 L 810,160 L 770,160" style="animation-delay: 0.8s;"/>
+    <circle class="circuit-node" cx="770" cy="160" r="0" style="animation-delay: 1.3s;"/>
+    
+    <path class="circuit-path" d="M 100,180 L 140,180 L 140,170 L 180,170 L 180,180 L 220,180" style="animation-delay: 1.1s;"/>
+    <circle class="circuit-node" cx="220" cy="180" r="0" style="animation-delay: 1.6s;"/>
+  </g>
+  
+  <!-- Floating particles -->
+  <g class="particles">
+    <circle class="particle" cx="150" cy="200" r="2" fill="#00ff88" style="animation-delay: 0s;"/>
+    <circle class="particle" cx="250" cy="210" r="1.5" fill="#00ffff" style="animation-delay: 0.7s;"/>
+    <circle class="particle" cx="350" cy="205" r="2" fill="#0088ff" style="animation-delay: 1.4s;"/>
+    <circle class="particle" cx="450" cy="215" r="1.5" fill="#8800ff" style="animation-delay: 2.1s;"/>
+    <circle class="particle" cx="550" cy="200" r="2" fill="#00ff88" style="animation-delay: 2.8s;"/>
+    <circle class="particle" cx="650" cy="210" r="1.5" fill="#00ffff" style="animation-delay: 3.5s;"/>
+    <circle class="particle" cx="750" cy="205" r="2" fill="#0088ff" style="animation-delay: 4.2s;"/>
+  </g>
+  
+  <!-- Moving scanline -->
+  <rect class="scanline-moving" x="0" y="0" width="900" height="20"/>
+  
+  <!-- Static scanlines overlay -->
+  <rect class="scanline-static" x="0" y="0" width="900" height="220" opacity="0.02"/>
+  
+  <!-- Main Title with glitch layers -->
+  <g transform="translate(450, 95)">
+    <!-- Glitch layers (behind) -->
+    <text class="title-glitch-r" x="0" y="0" text-anchor="middle">KOCA VENTURES</text>
+    <text class="title-glitch-c" x="0" y="0" text-anchor="middle">KOCA VENTURES</text>
+    <!-- Main text -->
+    <text class="title-main" x="0" y="0" text-anchor="middle">KOCA VENTURES</text>
+  </g>
+  
+  <!-- Subtitle with typing effect -->
+  <g transform="translate(450, 130)">
+    <g class="subtitle-container">
+      <text class="subtitle" x="0" y="0" text-anchor="middle">ENGINEERING TOMORROW'S TECHNOLOGY</text>
+    </g>
+    <!-- Typing cursor -->
+    <rect class="cursor" x="-170" y="-12" width="2" height="16"/>
+  </g>
+  
+  <!-- Decorative lines -->
+  <line x1="180" y1="150" x2="350" y2="150" stroke="url(#neonGradient)" stroke-width="1" opacity="0.4"/>
+  <line x1="550" y1="150" x2="720" y2="150" stroke="url(#neonGradient)" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Animated Badges -->
+  <g transform="translate(210, 170)">
+    <g class="badge-group badge-1">
+      <rect class="badge" x="0" y="0" width="65" height="26" fill="#238636"/>
+      <text class="badge-text" x="32.5" y="17" text-anchor="middle">AI / CV</text>
+    </g>
+    <g class="badge-group badge-2" transform="translate(75, 0)">
+      <rect class="badge" x="0" y="0" width="75" height="26" fill="#0088ff"/>
+      <text class="badge-text" x="37.5" y="17" text-anchor="middle">Edge AI</text>
+    </g>
+    <g class="badge-group badge-3" transform="translate(160, 0)">
+      <rect class="badge" x="0" y="0" width="90" height="26" fill="#8800ff"/>
+      <text class="badge-text" x="45" y="17" text-anchor="middle">Simulation</text>
+    </g>
+    <g class="badge-group badge-4" transform="translate(260, 0)">
+      <rect class="badge" x="0" y="0" width="85" height="26" fill="#f97316"/>
+      <text class="badge-text" x="42.5" y="17" text-anchor="middle">Hardware</text>
+    </g>
+    <g class="badge-group badge-5" transform="translate(355, 0)">
+      <rect class="badge" x="0" y="0" width="85" height="26" fill="#ec4899"/>
+      <text class="badge-text" x="42.5" y="17" text-anchor="middle">Robotics</text>
+    </g>
+  </g>
+  
+</svg>

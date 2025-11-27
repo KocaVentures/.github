@@ -1,0 +1,292 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
+  <defs>
+    <style>
+      /* ═══════════════════════════════════════════════════════════════════════
+         EMBEDDED SYSTEMS CARD - ULTIMATE v2.0
+         Advanced: PCB manufacturing detail, signal integrity visualization,
+         component library, power distribution, oscilloscope trace
+      ═══════════════════════════════════════════════════════════════════════ */
+      
+      .card-bg { fill: #0a0e14; }
+      
+      /* ─────────────── NEON BORDER ─────────────── */
+      @keyframes border-trace {
+        0% { stroke-dashoffset: 800; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes border-glow-orange {
+        0%, 100% { 
+          stroke: #f97316;
+          filter: drop-shadow(0 0 3px #f97316) drop-shadow(0 0 8px #f97316);
+        }
+        50% { 
+          stroke: #fb923c;
+          filter: drop-shadow(0 0 5px #fb923c) drop-shadow(0 0 15px #fb923c);
+        }
+      }
+      
+      /* ─────────────── PCB TRACES ─────────────── */
+      @keyframes trace-flow {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes signal-travel {
+        0% { transform: translateX(0); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(60px); opacity: 0; }
+      }
+      
+      @keyframes trace-glow {
+        0%, 100% { filter: drop-shadow(0 0 1px #c9a227); }
+        50% { filter: drop-shadow(0 0 4px #c9a227); }
+      }
+      
+      /* ─────────────── COMPONENT ANIMATIONS ─────────────── */
+      @keyframes component-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.02); opacity: 1; }
+      }
+      
+      @keyframes chip-process {
+        0%, 100% { fill: #1a1a2e; }
+        50% { fill: #252540; }
+      }
+      
+      @keyframes crystal-oscillate {
+        0%, 100% { fill: #f97316; }
+        50% { fill: #fbbf24; }
+      }
+      
+      /* ─────────────── LED SEQUENCE ─────────────── */
+      @keyframes led-blink {
+        0%, 40% { fill: #1a2a1a; }
+        50%, 90% { fill: #00ff00; filter: drop-shadow(0 0 5px #00ff00); }
+        100% { fill: #1a2a1a; }
+      }
+      
+      @keyframes led-power {
+        0%, 100% { fill: #00ff00; filter: drop-shadow(0 0 3px #00ff00); }
+        50% { fill: #00cc00; filter: drop-shadow(0 0 6px #00ff00); }
+      }
+      
+      /* ─────────────── VIA AND PAD ─────────────── */
+      @keyframes via-glow {
+        0%, 100% { filter: drop-shadow(0 0 1px #c9a227); }
+        50% { filter: drop-shadow(0 0 4px #c9a227); }
+      }
+      
+      /* ─────────────── OSCILLOSCOPE ─────────────── */
+      @keyframes wave-draw {
+        0% { stroke-dashoffset: 200; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes wave-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-30px); }
+      }
+      
+      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
+      
+      .card-border {
+        fill: none;
+        stroke-width: 2;
+        stroke-dasharray: 800;
+        animation: border-trace 2s ease-out forwards, border-glow-orange 4s ease-in-out infinite 2s;
+      }
+      
+      /* PCB */
+      .pcb-board { fill: #0d3320; stroke: #1a5a3a; stroke-width: 1; }
+      .pcb-mask { fill: #0a2818; }
+      
+      /* Traces */
+      .trace {
+        fill: none;
+        stroke: #c9a227;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-dasharray: 100;
+        animation: trace-flow 2s ease-out forwards, trace-glow 3s ease-in-out infinite 2s;
+      }
+      .trace-thin { stroke-width: 1; }
+      .trace-power { stroke: #ff4444; stroke-width: 2.5; }
+      .trace-gnd { stroke: #444444; stroke-width: 2.5; }
+      
+      /* Signal dots */
+      .signal-dot {
+        fill: #00ff00;
+        animation: signal-travel 1.5s linear infinite;
+      }
+      
+      /* Components */
+      .component { animation: component-pulse 3s ease-in-out infinite; }
+      .chip { fill: #1a1a2e; stroke: #333; stroke-width: 1; animation: chip-process 2s ease-in-out infinite; }
+      .chip-text { fill: #888; font-family: monospace; font-size: 5px; }
+      .resistor { fill: #3d2b1f; stroke: #c9a227; stroke-width: 0.5; }
+      .capacitor { fill: #1a3a5c; stroke: #4a8ab0; stroke-width: 0.5; }
+      .crystal { fill: #f97316; stroke: #fbbf24; stroke-width: 0.5; animation: crystal-oscillate 0.5s steps(1) infinite; }
+      
+      /* LEDs */
+      .led-data { animation: led-blink 1.2s steps(1) infinite; }
+      .led-data-2 { animation-delay: 0.2s; }
+      .led-data-3 { animation-delay: 0.4s; }
+      .led-data-4 { animation-delay: 0.6s; }
+      .led-power { animation: led-power 2s ease-in-out infinite; }
+      
+      /* Vias */
+      .via { fill: #c9a227; stroke: #0d3320; stroke-width: 1; animation: via-glow 2s ease-in-out infinite; }
+      
+      /* Oscilloscope */
+      .scope-bg { fill: #0a0e14; stroke: #333; stroke-width: 1; }
+      .scope-grid { stroke: #1a3a2a; stroke-width: 0.5; }
+      .scope-wave { 
+        fill: none; 
+        stroke: #00ff00; 
+        stroke-width: 1.5;
+        stroke-dasharray: 200;
+        animation: wave-draw 2s linear forwards;
+      }
+      
+      /* Text */
+      .title { fill: #ffffff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 700; }
+      .desc { fill: #8b949e; font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; }
+      .metric { fill: #f97316; font-family: 'JetBrains Mono', monospace; font-size: 7px; }
+      .tag { rx: 4; }
+      .tag-text { fill: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9px; font-weight: 600; }
+      
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      }
+    </style>
+    
+    <!-- Gradients -->
+    <radialGradient id="pcbGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="card-bg" x="2" y="2" width="296" height="176" rx="14"/>
+  <rect class="card-border" x="2" y="2" width="296" height="176" rx="14"/>
+  
+  <!-- Grid -->
+  <g opacity="0.03">
+    <pattern id="gridE2" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f97316" stroke-width="0.5"/>
+    </pattern>
+    <rect x="2" y="2" width="296" height="176" rx="14" fill="url(#gridE2)"/>
+  </g>
+  
+  <!-- PCB glow -->
+  <ellipse cx="55" cy="60" rx="50" ry="45" fill="url(#pcbGlow)"/>
+  
+  <!-- PCB Board -->
+  <g transform="translate(10, 15)" filter="url(#glow)">
+    <!-- Main board -->
+    <rect class="pcb-board" x="0" y="0" width="90" height="90" rx="3"/>
+    
+    <!-- Solder mask areas -->
+    <rect class="pcb-mask" x="3" y="3" width="84" height="84" rx="2"/>
+    
+    <!-- PCB Traces -->
+    <path class="trace" d="M 10,75 L 10,55 L 30,55" style="animation-delay: 0s;"/>
+    <path class="trace trace-thin" d="M 45,20 L 45,35 L 60,35 L 60,50" style="animation-delay: 0.3s;"/>
+    <path class="trace" d="M 75,75 L 75,60 L 55,60 L 55,45" style="animation-delay: 0.6s;"/>
+    <path class="trace trace-thin" d="M 20,25 L 35,25 L 35,40" style="animation-delay: 0.9s;"/>
+    <path class="trace trace-power" d="M 5,10 L 85,10" style="animation-delay: 0.2s;"/>
+    <path class="trace trace-gnd" d="M 5,85 L 85,85" style="animation-delay: 0.4s;"/>
+    
+    <!-- Signal traveling dots -->
+    <circle class="signal-dot" cx="10" cy="65" r="2"/>
+    <circle class="signal-dot" cx="45" cy="25" r="1.5" style="animation-delay: 0.5s;"/>
+    <circle class="signal-dot" cx="70" cy="70" r="2" style="animation-delay: 1s;"/>
+    
+    <!-- Main MCU Chip -->
+    <g class="component" transform="translate(30, 35)">
+      <rect class="chip" x="0" y="0" width="30" height="25" rx="2"/>
+      <text class="chip-text" x="15" y="10" text-anchor="middle">STM32</text>
+      <text class="chip-text" x="15" y="18" text-anchor="middle">F407</text>
+      <!-- Pins -->
+      <rect fill="#c9a227" x="-3" y="5" width="4" height="2"/>
+      <rect fill="#c9a227" x="-3" y="10" width="4" height="2"/>
+      <rect fill="#c9a227" x="-3" y="15" width="4" height="2"/>
+      <rect fill="#c9a227" x="29" y="5" width="4" height="2"/>
+      <rect fill="#c9a227" x="29" y="10" width="4" height="2"/>
+      <rect fill="#c9a227" x="29" y="15" width="4" height="2"/>
+      <rect fill="#c9a227" x="8" y="-3" width="2" height="4"/>
+      <rect fill="#c9a227" x="14" y="-3" width="2" height="4"/>
+      <rect fill="#c9a227" x="20" y="-3" width="2" height="4"/>
+    </g>
+    
+    <!-- Crystal oscillator -->
+    <rect class="crystal" x="65" y="35" width="12" height="6" rx="1"/>
+    
+    <!-- Capacitors -->
+    <rect class="capacitor component" x="10" y="40" width="5" height="8" rx="1" style="animation-delay: 0.2s;"/>
+    <rect class="capacitor component" x="70" y="55" width="5" height="8" rx="1" style="animation-delay: 0.5s;"/>
+    <rect class="capacitor component" x="15" y="65" width="8" height="5" rx="1" style="animation-delay: 0.8s;"/>
+    
+    <!-- Resistors -->
+    <rect class="resistor component" x="50" y="70" width="10" height="4" style="animation-delay: 0.3s;"/>
+    <rect class="resistor component" x="25" y="75" width="10" height="4" style="animation-delay: 0.6s;"/>
+    
+    <!-- LEDs -->
+    <circle class="led-power" cx="80" cy="20" r="3"/>
+    <circle class="led-data" cx="72" cy="75" r="2.5"/>
+    <circle class="led-data led-data-2" cx="78" cy="75" r="2.5"/>
+    <circle class="led-data led-data-3" cx="84" cy="75" r="2.5"/>
+    
+    <!-- Vias -->
+    <circle class="via" cx="25" cy="50" r="2.5"/>
+    <circle class="via" cx="50" cy="30" r="2.5" style="animation-delay: 0.3s;"/>
+    <circle class="via" cx="65" cy="65" r="2.5" style="animation-delay: 0.6s;"/>
+    <circle class="via" cx="40" cy="70" r="2.5" style="animation-delay: 0.9s;"/>
+  </g>
+  
+  <!-- Mini Oscilloscope -->
+  <g transform="translate(12, 110)">
+    <rect class="scope-bg" x="0" y="0" width="80" height="30" rx="2"/>
+    <line class="scope-grid" x1="20" y1="0" x2="20" y2="30"/>
+    <line class="scope-grid" x1="40" y1="0" x2="40" y2="30"/>
+    <line class="scope-grid" x1="60" y1="0" x2="60" y2="30"/>
+    <line class="scope-grid" x1="0" y1="15" x2="80" y2="15"/>
+    <path class="scope-wave" d="M 5,15 L 10,5 L 15,25 L 20,5 L 25,25 L 30,5 L 35,25 L 40,5 L 45,25 L 50,5 L 55,25 L 60,5 L 65,25 L 70,5 L 75,15"/>
+  </g>
+  
+  <!-- Text content -->
+  <text class="title" x="120" y="35">Embedded</text>
+  
+  <text class="desc" x="120" y="55">Teensy, ESP32, STM32, nRF52</text>
+  <text class="desc" x="120" y="70">FreeRTOS, Zephyr RTOS</text>
+  <text class="desc" x="120" y="85">KiCad, Altium PCB design</text>
+  <text class="desc" x="120" y="100">CAN, Zigbee, LoRa, BLE</text>
+  
+  <!-- Metrics - positioned below descriptions -->
+  <g transform="translate(120, 118)">
+    <text class="metric" x="0" y="0">CLK: 168MHz</text>
+    <text class="metric" x="0" y="9">PWR: 3.3V</text>
+    <text class="metric" x="0" y="18">GPIO: 144</text>
+  </g>
+  
+  <!-- Tags -->
+  <g transform="translate(120, 140)">
+    <rect class="tag" x="0" y="0" width="55" height="20" fill="#f97316"/>
+    <text class="tag-text" x="27.5" y="14" text-anchor="middle">Teensy</text>
+    
+    <rect class="tag" x="60" y="0" width="50" height="20" fill="#E7352C"/>
+    <text class="tag-text" x="85" y="14" text-anchor="middle">ESP32</text>
+    
+    <rect class="tag" x="115" y="0" width="50" height="20" fill="#03234B"/>
+    <text class="tag-text" x="140" y="14" text-anchor="middle">KiCad</text>
+  </g>
+  
+</svg>
