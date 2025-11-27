@@ -2,265 +2,244 @@
   <defs>
     <style>
       /* ═══════════════════════════════════════════════════════════════════════
-         ROBOTICS CARD - ULTIMATE v2.0
-         Advanced: 6-DOF articulated arm, inverse kinematics, motion planning,
-         joint torque visualization, workspace envelope, trajectory planning
+         ROBOTICS CARD - 6-DOF ANIMATED v3.0
+         GitHub-compatible: cx/cy animations, stroke-dashoffset, opacity
+         No transform-origin rotations
       ═══════════════════════════════════════════════════════════════════════ */
-      
+
       .card-bg { fill: #0a0e14; }
-      
+
       /* ─────────────── NEON BORDER ─────────────── */
       @keyframes border-trace {
         0% { stroke-dashoffset: 800; }
         100% { stroke-dashoffset: 0; }
       }
-      
+
       @keyframes border-glow-pink {
-        0%, 100% { 
-          stroke: #ec4899;
-          filter: drop-shadow(0 0 3px #ec4899) drop-shadow(0 0 8px #ec4899);
-        }
-        50% { 
-          stroke: #f472b6;
-          filter: drop-shadow(0 0 5px #f472b6) drop-shadow(0 0 15px #f472b6);
-        }
-      }
-      
-      /* ─────────────── 6-DOF ARM EFFECTS (GITHUB COMPATIBLE) ─────────────── */
-      /* Arm segment glow effects - no transform-origin! */
-      @keyframes segment-glow {
-        0%, 100% {
-          opacity: 1;
-          filter: drop-shadow(0 0 2px #ec4899);
-        }
-        50% {
-          opacity: 0.95;
-          filter: drop-shadow(0 0 6px #ec4899);
-        }
+        0%, 100% { stroke: #ec4899; }
+        50% { stroke: #f472b6; }
       }
 
-      /* Flowing energy along arm segments */
-      @keyframes segment-flow {
-        0% { stroke-dashoffset: 100; }
-        100% { stroke-dashoffset: 0; }
+      /* ─────────────── 6-DOF JOINT ANIMATIONS ─────────────── */
+      /* J1: Base rotation - simulated with horizontal oscillation */
+      @keyframes j1-oscillate {
+        0%, 100% { cx: 50px; }
+        25% { cx: 48px; }
+        75% { cx: 52px; }
       }
 
-      /* Joint activity indicators */
-      @keyframes joint-active {
-        0%, 100% {
-          opacity: 1;
-          filter: drop-shadow(0 0 3px #ec4899);
-        }
-        50% {
-          opacity: 0.8;
-          filter: drop-shadow(0 0 8px #f472b6);
-        }
+      /* J2: Shoulder - vertical oscillation */
+      @keyframes j2-oscillate {
+        0%, 100% { cy: 55px; }
+        50% { cy: 53px; }
       }
 
-      /* Gripper pulse effect */
-      @keyframes gripper-pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.7; }
-      }
-      
-      /* ─────────────── JOINT EFFECTS ─────────────── */
-      @keyframes joint-pulse {
-        0%, 100% {
-          fill: #ec4899;
-          filter: drop-shadow(0 0 4px #ec4899) drop-shadow(0 0 8px #ec4899);
-        }
-        50% {
-          fill: #f472b6;
-          filter: drop-shadow(0 0 6px #f472b6) drop-shadow(0 0 12px #ec4899);
-        }
+      /* J3: Elbow - vertical movement */
+      @keyframes j3-oscillate {
+        0%, 100% { cy: 28px; }
+        50% { cy: 26px; }
       }
 
-      /* Enhanced joint glow for different joints */
+      /* J4: Wrist pitch */
+      @keyframes j4-oscillate {
+        0%, 100% { cy: 20px; }
+        50% { cy: 18px; }
+      }
+
+      /* J5: Wrist roll - horizontal micro-movement */
+      @keyframes j5-oscillate {
+        0%, 100% { cx: 50px; }
+        50% { cx: 51px; }
+      }
+
+      /* J6: Gripper open/close */
+      @keyframes gripper-open {
+        0%, 100% { opacity: 1; stroke-width: 2; }
+        50% { opacity: 0.8; stroke-width: 2.5; }
+      }
+
+      /* Joint glow pulses - staggered for each DOF */
       @keyframes joint-glow-1 {
-        0%, 100% { opacity: 1; filter: drop-shadow(0 0 3px #ec4899); }
-        50% { opacity: 0.85; filter: drop-shadow(0 0 10px #ec4899); }
+        0%, 100% { fill: #ec4899; opacity: 1; }
+        50% { fill: #f472b6; opacity: 0.85; }
       }
-
       @keyframes joint-glow-2 {
-        0%, 100% { opacity: 1; filter: drop-shadow(0 0 3px #f472b6); }
-        50% { opacity: 0.85; filter: drop-shadow(0 0 10px #f472b6); }
+        0%, 100% { fill: #f472b6; opacity: 1; }
+        50% { fill: #ec4899; opacity: 0.85; }
+      }
+      @keyframes joint-glow-3 {
+        0%, 100% { fill: #ec4899; opacity: 0.9; }
+        50% { fill: #ff6b9d; opacity: 1; }
       }
 
-      /* Joint status bar animations */
-      @keyframes status-bar-pulse {
-        0%, 100% {
-          opacity: 1;
-          filter: drop-shadow(0 0 2px currentColor);
-        }
-        50% {
-          opacity: 0.85;
-          filter: drop-shadow(0 0 4px currentColor);
-        }
+      /* Torque arc animation */
+      @keyframes torque-spin {
+        0% { stroke-dashoffset: 0; opacity: 0.8; }
+        50% { stroke-dashoffset: 15; opacity: 1; }
+        100% { stroke-dashoffset: 30; opacity: 0.8; }
       }
-      
-      @keyframes torque-indicator {
-        0%, 100% { stroke-dashoffset: 30; opacity: 0.5; }
-        50% { stroke-dashoffset: 0; opacity: 1; }
+
+      /* Energy flow through segments */
+      @keyframes energy-flow {
+        0% { stroke-dashoffset: 40; opacity: 0.4; }
+        50% { stroke-dashoffset: 0; opacity: 0.9; }
+        100% { stroke-dashoffset: -40; opacity: 0.4; }
       }
-      
+
+      /* Segment breathing */
+      @keyframes segment-breathe {
+        0%, 100% { stroke-opacity: 1; }
+        50% { stroke-opacity: 0.7; }
+      }
+
       /* ─────────────── MOTION PATH ─────────────── */
       @keyframes path-draw {
         0% { stroke-dashoffset: 200; opacity: 0; }
-        20% { opacity: 1; }
-        100% { stroke-dashoffset: 0; opacity: 1; }
+        20% { opacity: 0.8; }
+        100% { stroke-dashoffset: 0; opacity: 0.8; }
       }
-      
-      @keyframes path-fade {
-        0% { opacity: 1; }
-        100% { opacity: 0.2; }
-      }
-      
-      /* ─────────────── WORKSPACE ENVELOPE ─────────────── */
+
+      /* ─────────────── WORKSPACE ─────────────── */
       @keyframes envelope-pulse {
-        0%, 100% { opacity: 0.1; }
-        50% { opacity: 0.25; }
+        0%, 100% { opacity: 0.08; }
+        50% { opacity: 0.18; }
       }
-      
-      /* ─────────────── TARGET SYSTEM ─────────────── */
+
+      /* ─────────────── TARGET ─────────────── */
       @keyframes target-pulse {
-        0%, 100% { r: 6; opacity: 1; }
-        50% { r: 9; opacity: 0.6; }
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
       }
-      
-      @keyframes target-ring {
-        0% { r: 5; opacity: 1; stroke-width: 2; }
-        100% { r: 20; opacity: 0; stroke-width: 0.5; }
+
+      @keyframes target-ring-expand {
+        0% { r: 5px; opacity: 1; stroke-width: 2; }
+        100% { r: 18px; opacity: 0; stroke-width: 0.5; }
       }
-      
-      /* ─────────────── COORDINATE GRID ─────────────── */
+
+      /* ─────────────── GRID ─────────────── */
       @keyframes grid-scan {
         0%, 100% { opacity: 0.1; }
         50% { opacity: 0.2; }
       }
-      
+
       /* ═══════════════ ELEMENT CLASSES ═══════════════ */
-      
+
       .card-border {
         fill: none;
         stroke-width: 2;
         stroke-dasharray: 800;
         animation: border-trace 2s ease-out forwards, border-glow-pink 4s ease-in-out infinite 2s;
       }
-      
-      /* TRUE 6-DOF Arm - STATIC with glowing joint indicators */
-      /* Segment glow effects */
-      .arm-base {
-        animation: segment-glow 3s ease-in-out infinite;
-      }
-      .arm-seg-1 {
-        animation: segment-glow 3s ease-in-out infinite 0.5s;
-      }
-      .arm-seg-2 {
-        animation: segment-glow 3s ease-in-out infinite 1s;
-      }
-      .wrist-pitch {
-        animation: segment-glow 2.5s ease-in-out infinite 1.5s;
-      }
-      .wrist-roll {
-        animation: segment-glow 2.5s ease-in-out infinite 2s;
-      }
-      .gripper-l, .gripper-r {
-        animation: gripper-pulse 2s ease-in-out infinite;
-      }
-      
-      /* Joints */
-      .joint { animation: joint-pulse 2s ease-in-out infinite; }
+
+      /* Joints with oscillation */
+      .j1 { animation: j1-oscillate 3s ease-in-out infinite, joint-glow-1 2s ease-in-out infinite; }
+      .j2 { animation: j2-oscillate 2.5s ease-in-out infinite 0.2s, joint-glow-2 2s ease-in-out infinite 0.3s; }
+      .j3 { animation: j3-oscillate 2.8s ease-in-out infinite 0.4s, joint-glow-1 2s ease-in-out infinite 0.6s; }
+      .j4 { animation: j4-oscillate 2.2s ease-in-out infinite 0.6s, joint-glow-3 2s ease-in-out infinite 0.9s; }
+      .j5 { animation: j5-oscillate 2s ease-in-out infinite 0.8s, joint-glow-2 2s ease-in-out infinite 1.2s; }
+      .j6-l, .j6-r { animation: gripper-open 1.5s ease-in-out infinite; }
+      .j6-r { animation-delay: 0.1s; }
+
+      /* Torque indicators */
       .torque-arc {
         fill: none;
         stroke: #ec4899;
         stroke-width: 2;
-        stroke-dasharray: 30;
-        animation: torque-indicator 1.5s ease-in-out infinite;
+        stroke-dasharray: 15 10;
+        animation: torque-spin 1.5s linear infinite;
       }
-      
+      .torque-arc-2 { animation-delay: 0.5s; }
+      .torque-arc-3 { animation-delay: 1s; }
+
+      /* Energy flow lines */
+      .energy-line {
+        fill: none;
+        stroke: #f472b6;
+        stroke-width: 2;
+        stroke-dasharray: 8 4;
+        stroke-linecap: round;
+        animation: energy-flow 2s linear infinite;
+      }
+      .energy-line-2 { animation-delay: 0.3s; }
+      .energy-line-3 { animation-delay: 0.6s; }
+      .energy-line-4 { animation-delay: 0.9s; }
+
+      /* Arm segments */
+      .arm-segment {
+        fill: #2a2a3e;
+        stroke: #ec4899;
+        stroke-width: 2;
+        animation: segment-breathe 3s ease-in-out infinite;
+      }
+      .arm-segment-2 { animation-delay: 0.5s; }
+      .arm-segment-3 { animation-delay: 1s; }
+      .arm-detail { fill: #1a1a2e; stroke: #666; stroke-width: 1; }
+      .base-platform { fill: #1a1a2e; stroke: #ec4899; stroke-width: 2; }
+
       /* Motion path */
       .motion-path {
         fill: none;
         stroke: #ec4899;
         stroke-width: 1.5;
         stroke-dasharray: 200;
-        animation: path-draw 3s ease-out forwards;
+        animation: path-draw 4s ease-out infinite;
       }
-      .motion-path-fade {
-        animation: path-fade 3s ease-out forwards 3s;
-      }
-      
+
       /* Workspace */
-      .workspace { fill: #ec4899; opacity: 0.1; animation: envelope-pulse 3s ease-in-out infinite; }
-      
+      .workspace { fill: #ec4899; animation: envelope-pulse 3s ease-in-out infinite; }
+
       /* Target */
       .target { fill: #00ff88; animation: target-pulse 1.5s ease-in-out infinite; }
-      .target-ring { fill: none; stroke: #00ff88; animation: target-ring 2s ease-out infinite; }
-      
+      .target-ring {
+        fill: none;
+        stroke: #00ff88;
+        animation: target-ring-expand 2s ease-out infinite;
+      }
+
       /* Grid */
       .coord-grid { stroke: #ec4899; stroke-width: 0.3; animation: grid-scan 3s ease-in-out infinite; }
-      
-      /* Arm parts */
-      .arm-segment { fill: #2a2a3e; stroke: #ec4899; stroke-width: 2; }
-      .arm-detail { fill: #1a1a2e; stroke: #666; stroke-width: 1; }
-      .base-platform { fill: #1a1a2e; stroke: #ec4899; stroke-width: 2; }
 
-      /* Energy flow lines along segments */
-      .flow-line {
-        fill: none;
-        stroke: #f472b6;
-        stroke-width: 1.5;
-        stroke-dasharray: 100;
-        stroke-linecap: round;
-        opacity: 0.6;
-        animation: segment-flow 2s linear infinite;
-      }
-      
       /* Text */
       .title { fill: #ffffff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: 700; }
       .desc { fill: #8b949e; font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; }
       .metric { fill: #ec4899; font-family: 'JetBrains Mono', monospace; font-size: 7px; }
-      .dof-label { fill: #ec4899; font-family: 'JetBrains Mono', monospace; font-size: 8px; font-weight: bold; }
+      .dof-label { fill: #00ff88; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: bold; }
+      .joint-label { fill: #f472b6; font-family: 'JetBrains Mono', monospace; font-size: 6px; }
       .tag { rx: 4; }
       .tag-text { fill: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9px; font-weight: 600; }
-      
+
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
       }
     </style>
-    
+
     <!-- Gradients -->
     <radialGradient id="robotGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.2"/>
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.25"/>
       <stop offset="100%" stop-color="#ec4899" stop-opacity="0"/>
     </radialGradient>
-    
-    <linearGradient id="armGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3a3a5e"/>
-      <stop offset="100%" stop-color="#2a2a3e"/>
-    </linearGradient>
-    
+
     <filter id="glow">
       <feGaussianBlur stdDeviation="2" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
-  
+
   <!-- Background -->
   <rect class="card-bg" x="2" y="2" width="296" height="176" rx="14"/>
   <rect class="card-border" x="2" y="2" width="296" height="176" rx="14"/>
-  
-  <!-- Grid -->
+
+  <!-- Grid pattern -->
   <g opacity="0.03">
     <pattern id="gridR" width="20" height="20" patternUnits="userSpaceOnUse">
       <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#ec4899" stroke-width="0.5"/>
     </pattern>
     <rect x="2" y="2" width="296" height="176" rx="14" fill="url(#gridR)"/>
   </g>
-  
+
   <!-- Robot glow -->
-  <ellipse cx="50" cy="60" rx="50" ry="50" fill="url(#robotGlow)"/>
-  
+  <ellipse cx="55" cy="65" rx="50" ry="50" fill="url(#robotGlow)"/>
+
   <!-- Coordinate grid -->
   <g transform="translate(10, 20)" opacity="0.15">
     <line class="coord-grid" x1="0" y1="40" x2="90" y2="40"/>
@@ -270,128 +249,122 @@
     <line class="coord-grid" x1="50" y1="10" x2="50" y2="95"/>
     <line class="coord-grid" x1="75" y1="10" x2="75" y2="95"/>
   </g>
-  
+
   <!-- Workspace envelope -->
-  <ellipse class="workspace" cx="50" cy="50" rx="45" ry="40" transform="translate(10, 15)"/>
-  
+  <ellipse class="workspace" cx="60" cy="55" rx="45" ry="40" transform="translate(5, 10)"/>
+
   <!-- Motion planning path -->
-  <path class="motion-path motion-path-fade" d="M 30,95 Q 20,50 50,30 Q 80,10 85,45" transform="translate(10, 10)"/>
-  
+  <path class="motion-path" d="M 35,100 Q 25,55 55,35 Q 85,15 90,50" transform="translate(5, 5)"/>
+
   <!-- Target point with rings -->
-  <g transform="translate(75, 40)">
+  <g transform="translate(80, 42)" filter="url(#glow)">
     <circle class="target-ring" r="6"/>
     <circle class="target-ring" r="6" style="animation-delay: 0.7s;"/>
-    <circle class="target" r="6"/>
+    <circle class="target" r="5"/>
   </g>
-  
-  <!-- Robot Arm -->
-  <g transform="translate(10, 10)" filter="url(#glow)">
+
+  <!-- Robot Arm with 6-DOF animations -->
+  <g transform="translate(15, 12)" filter="url(#glow)">
     <!-- Base platform -->
     <rect class="base-platform" x="35" y="95" width="30" height="12" rx="3"/>
     <rect class="arm-detail" x="40" y="100" width="20" height="5" rx="2"/>
-    
-    <!-- Arm assembly with kinematics -->
-    <g class="arm-base">
-      <!-- Energy flow from base -->
-      <line class="flow-line" x1="50" y1="95" x2="50" y2="87"/>
 
-      <!-- Base joint + torque indicator -->
-      <circle class="joint" cx="50" cy="85" r="5"/>
-      <path class="torque-arc" d="M 40,85 A 10,10 0 0,1 60,85"/>
-      
-      <g class="arm-seg-1">
-        <!-- Segment 1 -->
-        <rect class="arm-segment" x="45" y="55" width="10" height="35" rx="4"/>
-        <rect class="arm-detail" x="47" y="60" width="6" height="10" rx="2"/>
-        <!-- Energy flow line -->
-        <line class="flow-line" x1="50" y1="85" x2="50" y2="58"/>
+    <!-- J1: Base rotation joint -->
+    <circle class="j1" cx="50" cy="87" r="6" fill="#ec4899"/>
+    <path class="torque-arc" d="M 38,87 A 12,12 0 0,1 62,87"/>
+    <text class="joint-label" x="68" y="89">J1</text>
 
-        <!-- Elbow joint -->
-        <circle class="joint" cx="50" cy="55" r="5" style="animation-delay: 0.3s;"/>
-        <path class="torque-arc" d="M 42,50 A 8,8 0 0,1 58,50" style="animation-delay: 0.3s;"/>
-        
-        <g class="arm-seg-2">
-          <!-- Segment 2 -->
-          <rect class="arm-segment" x="45" y="28" width="10" height="32" rx="4"/>
-          <rect class="arm-detail" x="47" y="32" width="6" height="8" rx="2"/>
-          <!-- Energy flow line -->
-          <line class="flow-line" x1="50" y1="55" x2="50" y2="30" style="animation-delay: 0.3s;"/>
+    <!-- Energy flow: Base to Seg1 -->
+    <line class="energy-line" x1="50" y1="87" x2="50" y2="58"/>
 
-          <!-- J4: Wrist pitch joint -->
-          <circle class="joint" cx="50" cy="28" r="4" style="animation-delay: 0.6s;"/>
-          <path class="torque-arc" d="M 44,24 A 6,6 0 0,1 56,24" style="animation-delay: 0.6s;"/>
+    <!-- Segment 1: Shoulder -->
+    <rect class="arm-segment" x="45" y="55" width="10" height="35" rx="4"/>
 
-          <!-- Wrist assembly with J4 pitch + J5 roll + J6 gripper -->
-          <g class="wrist-pitch">
-            <!-- Wrist segment -->
-            <rect class="arm-segment" x="47" y="20" width="6" height="10" rx="2"/>
-            <!-- Energy flow line -->
-            <line class="flow-line" x1="50" y1="28" x2="50" y2="21" style="animation-delay: 0.6s;"/>
+    <!-- J2: Shoulder joint -->
+    <circle class="j2" cx="50" cy="55" r="5" fill="#f472b6"/>
+    <path class="torque-arc torque-arc-2" d="M 40,50 A 10,10 0 0,1 60,50"/>
+    <text class="joint-label" x="65" y="57">J2</text>
 
-            <!-- J5: Wrist roll joint -->
-            <circle class="joint" cx="50" cy="20" r="3" fill="#f472b6" style="animation-delay: 0.8s;"/>
+    <!-- Energy flow: Seg1 to Seg2 -->
+    <line class="energy-line energy-line-2" x1="50" y1="55" x2="50" y2="30"/>
 
-            <g class="wrist-roll">
-              <!-- Gripper base -->
-              <rect class="arm-segment" x="46" y="10" width="8" height="12" rx="2"/>
-              <!-- Energy flow line -->
-              <line class="flow-line" x1="50" y1="20" x2="50" y2="12" style="animation-delay: 0.9s;"/>
+    <!-- Segment 2: Upper arm -->
+    <rect class="arm-segment arm-segment-2" x="45" y="28" width="10" height="30" rx="4"/>
 
-              <!-- J6: Left gripper finger -->
-              <g class="gripper-l">
-                <path class="arm-segment" d="M 44,12 L 38,2 L 40,0 L 46,10 Z"/>
-              </g>
+    <!-- J3: Elbow joint -->
+    <circle class="j3" cx="50" cy="28" r="5" fill="#ec4899"/>
+    <path class="torque-arc torque-arc-3" d="M 42,24 A 8,8 0 0,1 58,24"/>
+    <text class="joint-label" x="63" y="30">J3</text>
 
-              <!-- J6: Right gripper finger -->
-              <g class="gripper-r">
-                <path class="arm-segment" d="M 56,12 L 62,2 L 60,0 L 54,10 Z"/>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-    </g>
+    <!-- Energy flow: Seg2 to Wrist -->
+    <line class="energy-line energy-line-3" x1="50" y1="28" x2="50" y2="12"/>
+
+    <!-- Segment 3: Wrist -->
+    <rect class="arm-segment arm-segment-3" x="46" y="18" width="8" height="12" rx="2"/>
+
+    <!-- J4: Wrist pitch -->
+    <circle class="j4" cx="50" cy="20" r="4" fill="#f472b6"/>
+    <text class="joint-label" x="58" y="22">J4</text>
+
+    <!-- J5: Wrist roll -->
+    <circle class="j5" cx="50" cy="14" r="3" fill="#ff6b9d"/>
+    <text class="joint-label" x="56" y="16">J5</text>
+
+    <!-- Energy flow to gripper -->
+    <line class="energy-line energy-line-4" x1="50" y1="14" x2="50" y2="6"/>
+
+    <!-- Gripper base -->
+    <rect class="arm-segment" x="46" y="4" width="8" height="10" rx="2"/>
+
+    <!-- J6: Gripper fingers -->
+    <path class="j6-l arm-segment" d="M 44,8 L 36,0 L 38,-2 L 46,6 Z"/>
+    <path class="j6-r arm-segment" d="M 56,8 L 64,0 L 62,-2 L 54,6 Z"/>
+    <text class="joint-label" x="28" y="4">J6</text>
   </g>
-  
-  <!-- DOF indicator -->
-  <text class="dof-label" x="85" y="115">6-DOF</text>
-  
+
+  <!-- 6-DOF indicator -->
+  <text class="dof-label" x="80" y="118">6-DOF</text>
+
   <!-- Metrics -->
-  <g transform="translate(12, 125)">
+  <g transform="translate(12, 128)">
     <text class="metric" x="0" y="0">PAYLOAD: 5kg</text>
     <text class="metric" x="0" y="10">REACH: 850mm</text>
     <text class="metric" x="0" y="20">REPEAT: ±0.02mm</text>
   </g>
-  
+
   <!-- Text content -->
   <text class="title" x="120" y="35">Robotics</text>
-  
+
   <text class="desc" x="120" y="55">ROS2 perception stacks</text>
   <text class="desc" x="120" y="70">Motion planning &amp; control</text>
   <text class="desc" x="120" y="85">6-DOF arm manipulation</text>
   <text class="desc" x="120" y="100">Sim-to-real transfer</text>
-  
-  <!-- Joint status -->
+
+  <!-- Joint status bars -->
   <g transform="translate(120, 110)">
     <rect x="0" y="0" width="80" height="6" fill="#1a2a3a" rx="2"/>
-    <rect x="0" y="0" width="65" height="6" fill="#ec4899" rx="2" style="animation: status-bar-pulse 2s ease-in-out infinite;"/>
+    <rect x="0" y="0" width="65" height="6" fill="#ec4899" rx="2">
+      <animate attributeName="width" values="65;70;60;65" dur="2s" repeatCount="indefinite"/>
+    </rect>
     <text fill="#8b949e" font-size="7" x="85" y="5" font-family="monospace">J1-3</text>
 
     <rect x="0" y="10" width="80" height="6" fill="#1a2a3a" rx="2"/>
-    <rect x="0" y="10" width="55" height="6" fill="#f472b6" rx="2" style="animation: status-bar-pulse 2s ease-in-out infinite 0.5s;"/>
+    <rect x="0" y="10" width="55" height="6" fill="#f472b6" rx="2">
+      <animate attributeName="width" values="55;60;50;55" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </rect>
     <text fill="#8b949e" font-size="7" x="85" y="15" font-family="monospace">J4-6</text>
   </g>
-  
+
   <!-- Tags -->
   <g transform="translate(120, 140)">
     <rect class="tag" x="0" y="0" width="45" height="20" fill="#22314E"/>
     <text class="tag-text" x="22.5" y="14" text-anchor="middle">ROS2</text>
-    
+
     <rect class="tag" x="50" y="0" width="55" height="20" fill="#ec4899"/>
     <text class="tag-text" x="77.5" y="14" text-anchor="middle">MoveIt2</text>
-    
+
     <rect class="tag" x="110" y="0" width="55" height="20" fill="#0088ff"/>
     <text class="tag-text" x="137.5" y="14" text-anchor="middle">PyBullet</text>
   </g>
-  
+
 </svg>

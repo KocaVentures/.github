@@ -12,20 +12,21 @@
 
 ## Core Capabilities
 
+<div align="center">
 <table>
 <tr>
-<td width="50%">
+<td align="center" width="50%">
 <img src="../assets/cv-card-v2.svg" alt="Computer Vision" width="100%"/>
 </td>
-<td width="50%">
+<td align="center" width="50%">
 <img src="../assets/edge-ai-card-v2.svg" alt="Edge AI" width="100%"/>
 </td>
 </tr>
 <tr>
-<td width="50%">
+<td align="center" width="50%">
 <img src="../assets/simulation-card-v2.svg" alt="Simulation" width="100%"/>
 </td>
-<td width="50%">
+<td align="center" width="50%">
 <img src="../assets/embedded-card-v2.svg" alt="Embedded Systems" width="100%"/>
 </td>
 </tr>
@@ -35,6 +36,7 @@
 </td>
 </tr>
 </table>
+</div>
 
 ---
 
