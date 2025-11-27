@@ -1,13 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 180">
   <defs>
     <style>
-      /* ═══════════════════════════════════════════════════════════════════════
-         SIMULATION CARD v4.0 - GitHub-compatible CSS-only animations
-      ═══════════════════════════════════════════════════════════════════════ */
+      /* SIMULATION CARD v4.0 - GitHub-compatible CSS-only animations */
 
       .card-bg { fill: #0a0e14; }
 
-      /* ─────────────── NEON BORDER ─────────────── */
+      /* NEON BORDER */
       @keyframes border-trace {
         0% { stroke-dashoffset: 800; }
         100% { stroke-dashoffset: 0; }
@@ -18,7 +16,7 @@
         50% { stroke: #a855f7; }
       }
 
-      /* ─────────────── 3D CUBE SYSTEM ─────────────── */
+      /* 3D CUBE SYSTEM */
       @keyframes face-shimmer {
         0%, 100% { fill-opacity: 0.3; }
         50% { fill-opacity: 0.6; }
@@ -29,7 +27,7 @@
         50% { stroke-opacity: 1; }
       }
 
-      /* ─────────────── PHYSICS PARTICLES ─────────────── */
+      /* PHYSICS PARTICLES */
       @keyframes particle-glow-1 {
         0%, 100% { fill-opacity: 1; fill: #00ffff; }
         50% { fill-opacity: 0.5; fill: #00cccc; }
@@ -50,7 +48,7 @@
         50% { fill-opacity: 1; }
       }
 
-      /* ─────────────── COORDINATE SYSTEM ─────────────── */
+      /* COORDINATE SYSTEM */
       @keyframes axis-draw {
         0% { stroke-dashoffset: 50; }
         100% { stroke-dashoffset: 0; }
@@ -61,20 +59,20 @@
         50% { stroke-opacity: 1; }
       }
 
-      /* ─────────────── GRID SYSTEM ─────────────── */
+      /* GRID SYSTEM */
       @keyframes grid-fade {
         0%, 100% { stroke-opacity: 0.1; }
         50% { stroke-opacity: 0.3; }
       }
 
-      /* ─────────────── ENVIRONMENT RINGS ─────────────── */
+      /* ENVIRONMENT RINGS */
       @keyframes env-flow {
         0% { stroke-dashoffset: 0; stroke-opacity: 0.3; }
         50% { stroke-dashoffset: 20; stroke-opacity: 0.7; }
         100% { stroke-dashoffset: 40; stroke-opacity: 0.3; }
       }
 
-      /* ─────────────── STATUS BARS ─────────────── */
+      /* STATUS BARS */
       @keyframes bar-pulse-1 {
         0%, 100% { fill-opacity: 1; }
         50% { fill-opacity: 0.7; }
@@ -85,7 +83,7 @@
         50% { fill-opacity: 0.6; }
       }
 
-      /* ═══════════════ ELEMENT CLASSES ═══════════════ */
+      /* ELEMENT CLASSES */
 
       .card-border {
         fill: none;
